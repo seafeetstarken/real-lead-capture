@@ -37,18 +37,18 @@ const LeadForm = () => {
       // Send to WhatsApp
       const whatsappNumber = "5547330843390";
       const whatsappMessage = encodeURIComponent(
-        `*Nova Lead - Realizzi Imóveis*\n\n` +
+        `*Nova Lead - Realizzati Móveis*\n\n` +
         `*Nome:* ${validatedData.name}\n` +
         `*Telefone:* ${validatedData.phone}\n` +
         `*Email:* ${validatedData.email}\n` +
-        `*Mensagem:* ${validatedData.message || "Solicito contato"}`
+        `*Mensagem:* ${validatedData.message || "Solicito orçamento"}`
       );
       
       window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
       
       toast({
-        title: "Mensagem enviada!",
-        description: "Em breve entraremos em contato com você.",
+        title: "Redirecionando para o WhatsApp",
+        description: "Você será direcionado para falar com nossa equipe.",
       });
       
       // Reset form
@@ -73,16 +73,16 @@ const LeadForm = () => {
           {/* Left Column - Info */}
           <div className="text-primary-foreground">
             <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">
-              Entre em <span className="text-secondary">Contato</span>
+              Agende seu <span className="text-accent">Orçamento</span>
             </h2>
             <p className="text-xl mb-8 text-primary-foreground/90">
-              Fale com nossos especialistas e encontre o imóvel perfeito para você.
+              Entre em contato e transforme sua casa com móveis sob medida de alto padrão.
             </p>
             
             <div className="space-y-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
-                  <Phone className="w-6 h-6 text-secondary-foreground" />
+                <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center">
+                  <Phone className="w-6 h-6 text-accent-foreground" />
                 </div>
                 <div>
                   <p className="text-sm text-primary-foreground/70">Telefone / WhatsApp</p>
@@ -91,8 +91,8 @@ const LeadForm = () => {
               </div>
               
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
-                  <Mail className="w-6 h-6 text-secondary-foreground" />
+                <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-accent-foreground" />
                 </div>
                 <div>
                   <p className="text-sm text-primary-foreground/70">Email</p>
@@ -101,12 +101,12 @@ const LeadForm = () => {
               </div>
               
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
-                  <MapPin className="w-6 h-6 text-secondary-foreground" />
+                <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-accent-foreground" />
                 </div>
                 <div>
-                  <p className="text-sm text-primary-foreground/70">Localização</p>
-                  <p className="text-lg font-semibold">Balneário Camboriú, SC</p>
+                  <p className="text-sm text-primary-foreground/70">Atendimento</p>
+                  <p className="text-lg font-semibold">Médio Vale e Litoral - SC</p>
                 </div>
               </div>
             </div>
@@ -115,7 +115,7 @@ const LeadForm = () => {
           {/* Right Column - Form */}
           <Card className="shadow-luxury">
             <CardHeader>
-              <CardTitle className="font-serif text-2xl">Solicite um Contato</CardTitle>
+              <CardTitle className="font-serif text-2xl">Solicite um Orçamento</CardTitle>
               <CardDescription>
                 Preencha o formulário e entraremos em contato em breve
               </CardDescription>
@@ -165,7 +165,7 @@ const LeadForm = () => {
                   <Label htmlFor="message">Mensagem (opcional)</Label>
                   <Textarea
                     id="message"
-                    placeholder="Conte-nos sobre o que você procura..."
+                    placeholder="Conte-nos sobre o projeto que você tem em mente..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={4}
@@ -175,12 +175,12 @@ const LeadForm = () => {
                 
                 <Button 
                   type="submit" 
-                  className="w-full" 
-                  variant="hero"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" 
                   disabled={isSubmitting}
                   size="lg"
                 >
-                  {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
+                  <Phone className="mr-2 h-5 w-5" />
+                  {isSubmitting ? "Enviando..." : "Solicitar Orçamento"}
                 </Button>
               </form>
             </CardContent>

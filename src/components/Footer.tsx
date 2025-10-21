@@ -1,41 +1,48 @@
-import { Building2 } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground py-12">
+    <footer className="bg-secondary text-secondary-foreground py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Building2 className="h-8 w-8 text-secondary" />
-              <span className="font-serif text-2xl font-bold">Realizzi Imóveis</span>
-            </div>
-            <p className="text-primary-foreground/80">
-              Seu imóvel dos sonhos em Balneário Camboriú está aqui.
+            <h3 className="font-serif text-2xl font-bold mb-4">
+              Realizzati Móveis
+            </h3>
+            <p className="text-secondary-foreground/80">
+              Transformamos casas em lares únicos com móveis sob medida de alto padrão há mais de 12 anos.
             </p>
           </div>
-          
+
           <div>
-            <h3 className="font-semibold text-lg mb-4">Contato</h3>
-            <ul className="space-y-2 text-primary-foreground/80">
-              <li>(47) 3308-4390</li>
-              <li>contato@realizzatimoveis.com.br</li>
-              <li>Balneário Camboriú, SC</li>
-            </ul>
+            <h4 className="font-semibold mb-4">Contato</h4>
+            <div className="space-y-2 text-secondary-foreground/80">
+              <p className="flex items-center gap-2">
+                <Phone className="w-4 h-4" />
+                (47) 3308-4390
+              </p>
+              <p className="flex items-center gap-2">
+                <Mail className="w-4 h-4" />
+                contato@realizzatimoveis.com.br
+              </p>
+              <p className="flex items-center gap-2">
+                <MapPin className="w-4 h-4" />
+                Médio Vale e Litoral - SC
+              </p>
+            </div>
           </div>
-          
+
           <div>
-            <h3 className="font-semibold text-lg mb-4">Horário de Atendimento</h3>
-            <ul className="space-y-2 text-primary-foreground/80">
-              <li>Segunda a Sexta: 9h às 18h</li>
-              <li>Sábado: 9h às 14h</li>
-              <li>Domingo: Fechado</li>
-            </ul>
+            <h4 className="font-semibold mb-4">Horário de Atendimento</h4>
+            <div className="space-y-2 text-secondary-foreground/80">
+              <p>Segunda a Sexta: 9h às 18h</p>
+              <p>Sábado: 9h às 13h</p>
+            </div>
           </div>
         </div>
-        
-        <div className="border-t border-primary-foreground/20 pt-8 text-center text-primary-foreground/60">
-          <p>&copy; {new Date().getFullYear()} Realizzi Imóveis. Todos os direitos reservados.</p>
+
+        <div className="border-t border-secondary-foreground/20 pt-8 text-center text-secondary-foreground/80">
+          <p>&copy; 2024 Realizzati Móveis. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>
