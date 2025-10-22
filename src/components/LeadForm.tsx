@@ -35,13 +35,13 @@ const LeadForm = () => {
       const validatedData = contactSchema.parse(formData);
       
       // Send to WhatsApp
-      const whatsappNumber = "5547330843390";
+      const whatsappNumber = "554733084390";
       const whatsappMessage = encodeURIComponent(
-        `*Nova Lead - Realizzati Móveis*\n\n` +
-        `*Nome:* ${validatedData.name}\n` +
-        `*Telefone:* ${validatedData.phone}\n` +
-        `*Email:* ${validatedData.email}\n` +
-        `*Mensagem:* ${validatedData.message || "Solicito orçamento"}`
+        `Ola! Vim atraves do site Realizzati Moveis\n\n` +
+        `Nome: ${validatedData.name}\n` +
+        `Telefone: ${validatedData.phone}\n` +
+        `Email: ${validatedData.email}\n` +
+        `Mensagem: ${validatedData.message || "Solicito orcamento"}`
       );
       
       window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
