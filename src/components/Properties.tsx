@@ -30,80 +30,93 @@ const ambientes = [
 ];
 
 const Properties = () => {
-  const whatsappNumber = "5547330843390";
-  
-  const handleAmbienteInterest = (ambienteTitle: string) => {
-    const message = encodeURIComponent(`Olá! Gostaria de saber mais sobre: ${ambienteTitle}`);
-    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+  const scrollToForm = () => {
+    document.getElementById("lead-form")?.scrollIntoView({ 
+      behavior: "smooth",
+      block: "start"
+    });
   };
 
   return (
-    <section id="ambientes" className="py-20 bg-background">
+    <section id="ambientes" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Ambientes <span className="text-primary">Exclusivos</span>
+        <div className="text-center mb-20 reveal">
+          <h2 className="text-5xl md:text-6xl font-serif font-bold text-foreground mb-6 tracking-tight">
+            Ambientes Exclusivos
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Móveis planejados sob medida para cada ambiente da sua casa. Design sofisticado e funcionalidade perfeita.
+          <p className="text-muted-foreground text-xl max-w-3xl mx-auto font-light leading-relaxed">
+            Cada projeto é único, pensado e executado com perfeição para
+            refletir sua personalidade e estilo de vida.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {ambientes.map((ambiente, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-luxury transition-all duration-300 hover:-translate-y-2">
-              <div className="relative h-64 overflow-hidden">
-                <img 
-                  src={ambiente.image} 
-                  alt={ambiente.title}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <ambiente.icon className="w-6 h-6 text-primary" />
-                    <h3 className="font-serif text-2xl font-bold text-primary-foreground">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
+          {ambientes.map((ambiente, index) => {
+            const Icon = ambiente.icon;
+            return (
+              <div
+                key={index}
+                className="group relative overflow-hidden rounded-2xl glass shadow-glass hover-lift"
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
+                <div className="aspect-[4/3] overflow-hidden relative">
+                  <img
+                    src={ambiente.image}
+                    alt={ambiente.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div className="p-8 bg-card">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 rounded-lg bg-primary/10">
+                      <Icon className="w-7 h-7 text-primary" />
+                    </div>
+                    <h3 className="text-2xl font-serif font-semibold text-card-foreground">
                       {ambiente.title}
                     </h3>
                   </div>
+                  <ul className="space-y-2 mb-5">
+                    {ambiente.features.map((feature, idx) => (
+                      <li
+                        key={idx}
+                        className="text-muted-foreground flex items-start gap-2 text-base"
+                      >
+                        <span className="text-primary mt-1 font-bold">✦</span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-muted-foreground mb-6 leading-relaxed text-base">
+                    {ambiente.description}
+                  </p>
+                  <Button
+                    className="w-full group-hover:shimmer transition-all duration-300 text-base font-semibold py-6"
+                    onClick={scrollToForm}
+                  >
+                    Solicitar Orçamento
+                  </Button>
                 </div>
               </div>
-              <CardContent className="p-6">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {ambiente.features.map((feature, idx) => (
-                    <span key={idx} className="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">
-                      {feature}
-                    </span>
-                  ))}
-                </div>
-                <p className="text-muted-foreground mb-6">
-                  {ambiente.description}
-                </p>
-                <Button 
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" 
-                  onClick={() => handleAmbienteInterest(ambiente.title)}
-                >
-                  Solicitar Orçamento
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+            );
+          })}
         </div>
 
-        <div className="bg-gradient-primary p-8 rounded-lg text-center shadow-luxury">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <ChefHat className="w-8 h-8 text-primary-foreground" />
-            <h3 className="font-serif text-3xl font-bold text-primary-foreground">
-              Cozinhas Sob Medida
-            </h3>
-          </div>
-          <p className="text-primary-foreground/90 mb-6 max-w-2xl mx-auto">
-            Projetos completos de cozinhas planejadas com acabamento premium. Funcionalidade e beleza que transformam o coração da sua casa.
+        {/* Cozinhas Section */}
+        <div className="glass-dark rounded-3xl p-10 md:p-16 text-center shadow-luxury reveal">
+          <h3 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-primary">
+            Cozinhas Sob Medida
+          </h3>
+          <p className="text-white/90 text-xl mb-8 max-w-4xl mx-auto leading-relaxed font-light">
+            Transforme sua cozinha no coração do seu lar. Projetos completos que
+            combinam funcionalidade, elegância e aproveitamento inteligente de
+            cada espaço. Da bancada aos armários, cada detalhe é pensado para
+            você.
           </p>
-          <Button 
+          <Button
             size="lg"
-            className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
-            onClick={() => handleAmbienteInterest("Cozinha Planejada")}
+            onClick={scrollToForm}
+            className="shimmer font-semibold text-lg px-10 py-7 shadow-luxury"
           >
             Conhecer Cozinhas Planejadas
           </Button>

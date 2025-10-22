@@ -1,15 +1,18 @@
 import { Phone, Mail, MapPin } from "lucide-react";
+import logo from "@/assets/realizzati-logo-horizontal.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary text-secondary-foreground py-12">
+    <footer className="bg-secondary text-secondary-foreground py-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
-            <h3 className="font-serif text-2xl font-bold mb-4">
-              Realizzati Móveis
-            </h3>
-            <p className="text-secondary-foreground/80">
+            <img
+              src={logo}
+              alt="Realizzati Móveis"
+              className="h-12 mb-6 brightness-0 invert"
+            />
+            <p className="text-secondary-foreground/80 leading-relaxed">
               Transformamos casas em lares únicos com móveis sob medida de alto padrão há mais de 12 anos.
             </p>
           </div>

@@ -1,48 +1,65 @@
 import { Button } from "@/components/ui/button";
-import { Phone } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBackground from "@/assets/hero-bg.jpg";
+import logo from "@/assets/realizzati-logo-vertical.png";
+import { ChevronDown } from "lucide-react";
 
 const Hero = () => {
-  const whatsappNumber = "5547330843390";
-  const whatsappMessage = encodeURIComponent("Olá! Gostaria de agendar um orçamento para móveis sob medida.");
+  const scrollToForm = () => {
+    document.getElementById("lead-form")?.scrollIntoView({ 
+      behavior: "smooth",
+      block: "start"
+    });
+  };
+
+  const scrollToAmbientes = () => {
+    document.getElementById("ambientes")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 z-0"
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundImage: `url(${heroBackground})`,
         }}
       >
-        <div className="absolute inset-0 bg-secondary/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary/90 via-secondary/70 to-secondary/90"></div>
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 mx-auto px-4 text-center">
-        <h1 className="font-serif text-5xl md:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in">
-          Móveis Sob Medida
-          <span className="block text-primary mt-2">de Alto Padrão</span>
+      <div className="container relative z-10 mx-auto px-4 text-center text-white pt-24">
+        {/* Logo */}
+        <div className="mb-8 animate-fade-in flex justify-center">
+          <img
+            src={logo}
+            alt="Realizzati Móveis"
+            className="h-32 md:h-40 drop-shadow-2xl"
+          />
+        </div>
+
+        <h1 className="mb-6 font-serif text-5xl font-bold leading-tight md:text-7xl lg:text-8xl animate-fade-in text-shadow-lg tracking-tight">
+          Móveis Sob Medida de Alto Padrão
         </h1>
-        <p className="text-xl md:text-2xl text-primary-foreground mb-8 max-w-3xl mx-auto">
-          Transformamos casas em lares únicos há mais de 12 anos. Estilo, qualidade e conforto em cada detalhe.
+        <p className="mx-auto mb-12 max-w-3xl text-lg md:text-2xl text-white/90 animate-fade-in font-light leading-relaxed">
+          Transforme seus ambientes com móveis exclusivos, projetados especialmente
+          para você. Qualidade incomparável, design sofisticado e acabamento
+          perfeito.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button 
-            size="lg" 
-            className="text-lg px-8 py-6 h-auto bg-primary hover:bg-primary/90 text-primary-foreground"
-            onClick={() => window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank')}
+
+        <div className="flex flex-col gap-4 sm:flex-row sm:justify-center animate-fade-in">
+          <Button
+            size="lg"
+            onClick={scrollToForm}
+            className="shimmer text-lg font-semibold shadow-luxury px-8 py-6 text-xl"
           >
-            <Phone className="mr-2 h-5 w-5" />
-            Agendar Orçamento
+            Solicitar Orçamento Grátis
           </Button>
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             variant="outline"
-            className="text-lg px-8 py-6 h-auto bg-primary-foreground/95 backdrop-blur-sm border-primary text-secondary hover:bg-primary-foreground"
-            onClick={() => document.getElementById('ambientes')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={scrollToAmbientes}
+            className="text-lg font-semibold bg-white/10 border-white/30 text-white hover:bg-white/20 px-8 py-6 text-xl backdrop-blur-sm"
           >
             Conhecer Ambientes
           </Button>
@@ -51,9 +68,7 @@ const Hero = () => {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary rounded-full flex items-start justify-center p-2">
-          <div className="w-1.5 h-3 bg-primary rounded-full" />
-        </div>
+        <ChevronDown className="h-8 w-8 text-white/80" />
       </div>
     </section>
   );
