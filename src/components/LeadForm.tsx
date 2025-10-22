@@ -9,10 +9,13 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import { z } from "zod";
 
 const contactSchema = z.object({
-  name: z.string().trim().min(1, { message: "Nome é obrigatório" }).max(100),
-  phone: z.string().trim().min(10, { message: "Telefone inválido" }).max(20),
+  name: z.string().trim().min(1, { message: "Nome é obrigatório" }).max(100)
+    .regex(/^[a-zA-ZÀ-ÿ\s'-]+$/, { message: "Nome contém caracteres inválidos" }),
+  phone: z.string().trim().min(10, { message: "Telefone inválido" }).max(20)
+    .regex(/^[\d()\s-]+$/, { message: "Telefone contém caracteres inválidos" }),
   email: z.string().trim().email({ message: "Email inválido" }).max(255),
-  message: z.string().trim().max(1000),
+  message: z.string().trim().max(1000)
+    .regex(/^[^<>]*$/, { message: "Mensagem contém caracteres não permitidos" }),
 });
 
 const LeadForm = () => {
