@@ -31,8 +31,8 @@ const Navbar = () => {
           <img
             src={logo}
             alt="Realizzati Móveis"
-            className={`transition-all duration-300 brightness-0 invert ${
-              scrolled ? "h-10" : "h-14"
+            className={`transition-all duration-300 ${
+              scrolled ? "h-10" : "h-14 brightness-0 invert"
             }`}
           />
           <button
