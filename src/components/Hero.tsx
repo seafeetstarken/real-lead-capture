@@ -34,7 +34,7 @@ const Hero = () => {
           <img
             src={logo}
             alt="Realizzati Móveis"
-            className="h-32 md:h-40 drop-shadow-2xl"
+            className="h-32 md:h-40 drop-shadow-[0_0_25px_rgba(255,255,255,1)] drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] filter"
           />
         </div>
 
