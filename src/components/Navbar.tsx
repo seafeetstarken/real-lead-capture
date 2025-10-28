@@ -28,13 +28,13 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <img
-            src={logo}
-            alt="Realizzati Móveis"
-            className={`transition-all duration-300 ${
-              scrolled ? "h-10" : "h-14 brightness-0 invert"
-            }`}
-          />
+          {scrolled && (
+            <img
+              src={logo}
+              alt="Realizzati Móveis"
+              className="transition-all duration-300 h-10"
+            />
+          )}
           <button
             onClick={scrollToForm}
             className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg"

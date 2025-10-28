@@ -1,9 +1,21 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import heroBackground from "@/assets/hero-bg.jpg";
 import logo from "@/assets/realizzati-logo-vertical.png";
 import { ChevronDown } from "lucide-react";
 
 const Hero = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const scrollToForm = () => {
     document.getElementById("lead-form")?.scrollIntoView({ 
       behavior: "smooth",
@@ -30,7 +42,9 @@ const Hero = () => {
       {/* Content */}
       <div className="container relative z-10 mx-auto px-4 text-center text-white pt-24">
         {/* Logo */}
-        <div className="mb-8 animate-fade-in flex justify-center">
+        <div className={`mb-8 animate-fade-in flex justify-center transition-opacity duration-500 ${
+          scrolled ? "opacity-0" : "opacity-100"
+        }`}>
           <img
             src={logo}
             alt="Realizzati Móveis"

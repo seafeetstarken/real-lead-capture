@@ -1,17 +1,17 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChefHat, Bed, Shirt, Bath } from "lucide-react";
-import furniture1 from "@/assets/furniture-1.jpg";
+import closetModern from "@/assets/closet-modern.jpg";
 import furniture2 from "@/assets/furniture-2.jpg";
 import furniture3 from "@/assets/furniture-3.jpg";
 
 const ambientes = [
   {
-    image: furniture1,
+    image: closetModern,
     title: "Closets Sob Medida",
     icon: Shirt,
-    features: ["Organização Inteligente", "Iluminação LED", "Gavetas Premium"],
-    description: "Closets planejados com design sofisticado e máxima funcionalidade para organizar seu guarda-roupa com elegância."
+    features: ["Iluminação em LED", "Ferragens de Alta Qualidade", "Moderno e Prático"],
+    description: "Closets planejados em MDF com design moderno, iluminação LED integrada e máxima funcionalidade para organizar seu guarda-roupa com elegância."
   },
   {
     image: furniture2,
