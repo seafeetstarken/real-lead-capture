@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ChefHat, Bed, Shirt, Bath } from "lucide-react";
 import closetModern from "@/assets/closet-modern.jpg";
 import furniture2 from "@/assets/furniture-2.jpg";
-import furniture3 from "@/assets/furniture-3.jpg";
+import bathroomModern from "@/assets/bathroom-modern.jpg";
 
 const ambientes = [
   {
@@ -21,11 +21,11 @@ const ambientes = [
     description: "Transforme seu quarto em um refúgio perfeito com móveis sob medida que combinam conforto e estilo."
   },
   {
-    image: furniture3,
-    title: "Banheiros Premium",
+    image: bathroomModern,
+    title: "Banheiros Sob Medida",
     icon: Bath,
-    features: ["Acabamento Sofisticado", "Móveis Resistentes", "Projeto Exclusivo"],
-    description: "Banheiros planejados com materiais de alta qualidade e design contemporâneo para seu bem-estar diário."
+    features: ["Acabamento Sofisticado", "Móveis Resistentes em MDF", "Projeto Exclusivo"],
+    description: "Banheiros planejados em MDF com design contemporâneo e materiais de alta qualidade para transformar seu espaço com elegância e funcionalidade."
   }
 ];
 
