@@ -15,7 +15,7 @@ const ambientes = [
   },
   {
     image: furniture2,
-    title: "Quartos Planejados",
+    title: "Quartos Sob Medida",
     icon: Bed,
     features: ["Cabeceiras Exclusivas", "Armários Embutidos", "Design Personalizado"],
     description: "Transforme seu quarto em um refúgio perfeito com móveis sob medida que combinam conforto e estilo."
