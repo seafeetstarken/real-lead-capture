@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -20,6 +21,7 @@ const contactSchema = z.object({
 
 const LeadForm = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -37,25 +39,14 @@ const LeadForm = () => {
       // Validate form data
       const validatedData = contactSchema.parse(formData);
       
-      // Send to WhatsApp
-      const whatsappNumber = "554733084390";
-      const whatsappMessage = encodeURIComponent(
-        `Ola! Vim atraves do site Realizzati Moveis\n\n` +
-        `Nome: ${validatedData.name}\n` +
-        `Telefone: ${validatedData.phone}\n` +
-        `Email: ${validatedData.email}\n` +
-        `Mensagem: ${validatedData.message || "Solicito orcamento"}`
-      );
-      
-      window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
-      
-      toast({
-        title: "Redirecionando para o WhatsApp",
-        description: "Você será direcionado para falar com nossa equipe.",
-      });
+      // Salvar dados no sessionStorage
+      sessionStorage.setItem('leadFormData', JSON.stringify(validatedData));
       
       // Reset form
       setFormData({ name: "", phone: "", email: "", message: "" });
+      
+      // Navegar para página de obrigado
+      navigate('/obrigado');
     } catch (error) {
       if (error instanceof z.ZodError) {
         toast({
