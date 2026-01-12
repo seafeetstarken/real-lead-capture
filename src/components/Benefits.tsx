@@ -8,8 +8,8 @@ const benefits = [
   },
   {
     icon: Sparkles,
-    title: "Marcenaria 4.0",
-    description: "Tecnologia e precisão que você sente no toque. Máquinas CNC, coladeiras automáticas e softwares inteligentes garantem acabamento impecável e encaixes milimétricos."
+    title: "Alto Padrão",
+    description: "Marcenaria 4.0 com máquinas CNC e softwares inteligentes que garantem acabamento impecável e encaixes milimétricos."
   },
   {
     icon: Users,
