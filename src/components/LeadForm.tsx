@@ -92,7 +92,7 @@ const LeadForm = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-2 text-lg">E-mail</h3>
-                  <p className="text-muted-foreground text-base">contato@realizzatimoveis.com.br</p>
+                  <p className="text-muted-foreground text-base">realizzatimoveis@gmail.com</p>
                 </div>
               </div>
 
