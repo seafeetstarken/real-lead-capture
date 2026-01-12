@@ -1,31 +1,30 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChefHat, Bed, Shirt, Bath } from "lucide-react";
-import closetModern from "@/assets/closet-modern.jpg";
-import furniture2 from "@/assets/furniture-2.jpg";
-import bathroomModern from "@/assets/bathroom-modern.jpg";
+import { ChefHat, Bed, Shirt } from "lucide-react";
+import cozinha1 from "@/assets/cozinha-1.jpg";
+import quarto1 from "@/assets/quarto-1.png";
+import closet1 from "@/assets/closet-1.png";
 
 const ambientes = [
   {
-    image: closetModern,
-    title: "Closets Sob Medida",
-    icon: Shirt,
-    features: ["Iluminação em LED", "Ferragens de Alta Qualidade", "Moderno e Prático"],
-    description: "Closets planejados em MDF com design moderno, iluminação LED integrada e máxima funcionalidade para organizar seu guarda-roupa com elegância."
+    image: cozinha1,
+    title: "Cozinhas Sob Medida",
+    icon: ChefHat,
+    features: ["Design Funcional", "Bancadas Exclusivas", "Aproveitamento Inteligente"],
+    description: "Transforme sua cozinha no coração do seu lar. Projetos completos que combinam funcionalidade, elegância e aproveitamento inteligente de cada espaço."
   },
   {
-    image: furniture2,
+    image: quarto1,
     title: "Quartos Sob Medida",
     icon: Bed,
     features: ["Cabeceiras Exclusivas", "Armários Embutidos", "Design Personalizado"],
     description: "Transforme seu quarto em um refúgio perfeito com móveis sob medida que combinam conforto e estilo."
   },
   {
-    image: bathroomModern,
-    title: "Banheiros Sob Medida",
-    icon: Bath,
-    features: ["Acabamento Sofisticado", "Móveis Resistentes em MDF", "Projeto Exclusivo"],
-    description: "Banheiros planejados em MDF com design contemporâneo e materiais de alta qualidade para transformar seu espaço com elegância e funcionalidade."
+    image: closet1,
+    title: "Closets Sob Medida",
+    icon: Shirt,
+    features: ["Iluminação em LED", "Ferragens de Alta Qualidade", "Moderno e Prático"],
+    description: "Closets planejados em MDF com design moderno, iluminação LED integrada e máxima funcionalidade para organizar seu guarda-roupa com elegância."
   }
 ];
 
@@ -50,7 +49,7 @@ const Properties = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {ambientes.map((ambiente, index) => {
             const Icon = ambiente.icon;
             return (
@@ -100,26 +99,6 @@ const Properties = () => {
               </div>
             );
           })}
-        </div>
-
-        {/* Cozinhas Section */}
-        <div className="glass-dark rounded-3xl p-10 md:p-16 text-center shadow-luxury reveal">
-          <h3 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-primary">
-            Cozinhas Sob Medida
-          </h3>
-          <p className="text-white/90 text-xl mb-8 max-w-4xl mx-auto leading-relaxed font-light">
-            Transforme sua cozinha no coração do seu lar. Projetos completos que
-            combinam funcionalidade, elegância e aproveitamento inteligente de
-            cada espaço. Da bancada aos armários, cada detalhe é pensado para
-            você.
-          </p>
-          <Button
-            size="lg"
-            onClick={scrollToForm}
-            className="shimmer font-semibold text-lg px-10 py-7 shadow-luxury"
-          >
-            Conhecer Cozinhas Planejadas
-          </Button>
         </div>
       </div>
     </section>
