@@ -8,8 +8,8 @@ const benefits = [
   },
   {
     icon: Sparkles,
-    title: "Alto Padrão",
-    description: "Materiais premium e acabamentos sofisticados que transformam ambientes em obras de arte."
+    title: "Marcenaria 4.0",
+    description: "Tecnologia e precisão que você sente no toque. Máquinas CNC, coladeiras automáticas e softwares inteligentes garantem acabamento impecável e encaixes milimétricos."
   },
   {
     icon: Users,
