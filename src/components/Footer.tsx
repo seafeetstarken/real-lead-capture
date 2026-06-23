@@ -13,7 +13,7 @@ const Footer = () => {
               className="h-12 mb-6 brightness-0 invert"
             />
             <p className="text-secondary-foreground/80 leading-relaxed">
-              Transformamos casas em lares únicos com móveis sob medida de alto padrão há mais de 12 anos.
+              Transformamos casas em lares únicos com móveis sob medida de alto padrão há mais de 15 anos.
             </p>
           </div>
 
@@ -44,7 +44,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-secondary-foreground/20 pt-8 text-center text-secondary-foreground/80">
-          <p>&copy; 2024 Realizzati Móveis. Todos os direitos reservados.</p>
+          <p>&copy; 2026 Realizzati Móveis. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>
