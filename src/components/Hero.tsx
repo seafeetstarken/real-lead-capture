@@ -78,6 +78,20 @@ const Hero = () => {
             Conhecer Ambientes
           </Button>
         </div>
+
+        {/* Offers */}
+        <div className="mt-12 flex flex-col gap-3 items-center animate-fade-in">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30">
+            <span className="text-primary font-semibold text-base md:text-lg">
+              À vista tem 10% de desconto
+            </span>
+          </div>
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+            <span className="text-white/90 font-medium text-sm md:text-base">
+              Parcelamos em até 24x no cartão de crédito sem entrada com juros de menos 1% ao mês
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}

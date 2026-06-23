@@ -3,8 +3,8 @@ import { Award, Users, Home, Sparkles } from "lucide-react";
 const stats = [
   {
     icon: Award,
-    value: "12+",
-    label: "Anos de Excelência",
+    value: "15+",
+    label: "Anos de Experiência",
   },
   {
     icon: Home,

@@ -13,7 +13,7 @@ const benefits = [
   },
   {
     icon: Users,
-    title: "Mais de 12 Anos",
+    title: "15 Anos de Experiência",
     description: "Experiência consolidada no Médio Vale e Litoral de SC, com centenas de projetos realizados."
   },
   {
