@@ -49,13 +49,13 @@ const Properties = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-stretch">
           {ambientes.map((ambiente, index) => {
             const Icon = ambiente.icon;
             return (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-2xl glass shadow-glass hover-lift"
+                className="group relative overflow-hidden rounded-2xl glass shadow-glass hover-lift h-full flex flex-col"
                 style={{ animationDelay: `${index * 0.15}s` }}
               >
                 <div className="aspect-[4/3] overflow-hidden relative">
@@ -66,7 +66,7 @@ const Properties = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                <div className="p-8 bg-card">
+                <div className="p-8 bg-card flex flex-col flex-grow">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="p-2 rounded-lg bg-primary/10">
                       <Icon className="w-7 h-7 text-primary" />
@@ -86,11 +86,11 @@ const Properties = () => {
                       </li>
                     ))}
                   </ul>
-                  <p className="text-muted-foreground mb-6 leading-relaxed text-base">
+                  <p className="text-muted-foreground mb-6 leading-relaxed text-base flex-grow">
                     {ambiente.description}
                   </p>
                   <Button
-                    className="w-full group-hover:shimmer transition-all duration-300 text-base font-semibold py-6"
+                    className="w-full group-hover:shimmer transition-all duration-300 text-base font-semibold py-6 mt-auto"
                     onClick={scrollToForm}
                   >
                     Solicitar Orçamento
