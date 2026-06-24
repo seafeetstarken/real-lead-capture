@@ -12,11 +12,6 @@ const ThankYou = () => {
   const [whatsappUrl, setWhatsappUrl] = useState("");
 
   useEffect(() => {
-    // Disparar evento de Lead para o Meta Pixel
-    if (window.fbq) {
-      window.fbq('track', 'Lead');
-    }
-
     // Recuperar dados do formulário do sessionStorage
     const savedData = sessionStorage.getItem('leadFormData');
     
