@@ -3,6 +3,7 @@ import { ChefHat, Bed, Shirt } from "lucide-react";
 import cozinha1 from "@/assets/cozinha-1.jpg";
 import quarto1 from "@/assets/quarto-1.png";
 import closet1 from "@/assets/closet-1.png";
+import { trackCtaClick } from "@/lib/gtm";
 
 const ambientes = [
   {
@@ -10,7 +11,7 @@ const ambientes = [
     title: "Cozinhas Sob Medida",
     icon: ChefHat,
     features: ["Cavas Usinadas Integradas", "Sensação Tátil Suave de Uso", "Aproveitamento Técnico"],
-    description: "Projetos que equilibram ergonomia e design contemporâneo. Mobiliário estruturado com sistemas de amortecimento e suavidade de movimento integrados."
+    description: "Projetos que equilibram ergonomia and design contemporâneo. Mobiliário estruturado com sistemas de amortecimento e suavidade de movimento integrados."
   },
   {
     image: quarto1,
@@ -29,7 +30,8 @@ const ambientes = [
 ];
 
 const Properties = () => {
-  const scrollToForm = () => {
+  const scrollToForm = (ambienteTitle?: string) => {
+    trackCtaClick("Solicitar Orçamento", ambienteTitle ? `Ambientes - ${ambienteTitle}` : "Ambientes");
     document.getElementById("lead-form")?.scrollIntoView({ 
       behavior: "smooth",
       block: "start"
@@ -91,7 +93,7 @@ const Properties = () => {
                   </p>
                   <Button
                     className="w-full group-hover:shimmer transition-all duration-300 text-base font-semibold py-6 mt-auto"
-                    onClick={scrollToForm}
+                    onClick={() => scrollToForm(ambiente.title)}
                   >
                     Solicitar Orçamento
                   </Button>

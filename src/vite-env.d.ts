@@ -2,4 +2,6 @@
 
 interface Window {
   fbq?: (command: string, event: string, params?: object) => void;
+  dataLayer?: object[];
 }
+

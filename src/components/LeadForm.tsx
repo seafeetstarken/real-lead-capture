@@ -42,6 +42,32 @@ const LeadForm = () => {
       // Salvar dados no sessionStorage
       sessionStorage.setItem('leadFormData', JSON.stringify(validatedData));
       
+      // Enviar os dados do lead em tempo real para o Firestore na nuvem
+      try {
+        await fetch(
+          "https://firestore.googleapis.com/v1/projects/seafeet-starken-core/databases/(default)/documents/leads?key=AIzaSyBzrCiUVyrbutrgwBHcxPf2mWIjWqOqBGA",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              fields: {
+                tenant: { stringValue: "realizzati_moveis" },
+                name: { stringValue: validatedData.name },
+                phone: { stringValue: validatedData.phone },
+                email: { stringValue: validatedData.email },
+                message: { stringValue: validatedData.message || "" },
+                createdAt: { stringValue: new Date().toISOString() },
+              },
+            }),
+          }
+        );
+      } catch (cloudError) {
+        // Loga o erro mas não impede a navegação para não estragar a experiência do usuário
+        console.error("Falha ao persistir lead no Firestore:", cloudError);
+      }
+      
       // Reset form
       setFormData({ name: "", phone: "", email: "", message: "" });
       

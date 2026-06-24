@@ -8,7 +8,31 @@ import ThankYou from "./pages/ThankYou";
 import DesignSystem from "./pages/DesignSystem";
 import NotFound from "./pages/NotFound";
 
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { trackVirtualPageView } from "@/lib/gtm";
+
 const queryClient = new QueryClient();
+
+// Componente para rastrear mudanças de rotas na SPA
+const RouteTracker = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Pequeno atraso para garantir que o título da página foi atualizado no DOM
+    const handlePageView = () => {
+      trackVirtualPageView(
+        location.pathname + location.search,
+        document.title
+      );
+    };
+
+    const timer = setTimeout(handlePageView, 100);
+    return () => clearTimeout(timer);
+  }, [location]);
+
+  return null;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -16,6 +40,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <RouteTracker />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/obrigado" element={<ThankYou />} />

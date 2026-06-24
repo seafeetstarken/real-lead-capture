@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import heroBackground from "@/assets/hero-bg.jpg";
 import logo from "@/assets/logo-vertical-light.png";
 import { ChevronDown } from "lucide-react";
+import { trackCtaClick } from "@/lib/gtm";
 
 const Hero = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -17,6 +18,7 @@ const Hero = () => {
   }, []);
 
   const scrollToForm = () => {
+    trackCtaClick("Falar com Projetista Especialista", "Hero");
     document.getElementById("lead-form")?.scrollIntoView({ 
       behavior: "smooth",
       block: "start"
@@ -24,6 +26,7 @@ const Hero = () => {
   };
 
   const scrollToAmbientes = () => {
+    trackCtaClick("Ver Ambientes Planejados", "Hero");
     document.getElementById("ambientes")?.scrollIntoView({ behavior: "smooth" });
   };
 

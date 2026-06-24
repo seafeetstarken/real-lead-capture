@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import logo from "@/assets/logo-horizontal-light.png";
+import { trackCtaClick } from "@/lib/gtm";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -14,6 +15,7 @@ const Navbar = () => {
   }, []);
 
   const scrollToForm = () => {
+    trackCtaClick("Solicitar Orçamento", "Navbar");
     document.getElementById("lead-form")?.scrollIntoView({ 
       behavior: "smooth",
       block: "start"

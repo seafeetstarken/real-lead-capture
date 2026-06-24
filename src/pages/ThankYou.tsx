@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2 } from "lucide-react";
 import logoHorizontal from "@/assets/logo-horizontal-dark.png";
+import { trackLeadSuccess, trackWhatsAppClick } from "@/lib/gtm";
 
 const ThankYou = () => {
   const navigate = useNavigate();
@@ -21,6 +22,14 @@ const ThankYou = () => {
     
     if (savedData) {
       const data = JSON.parse(savedData);
+      
+      // Rastreamento GTM: Conversão com Enhanced Conversions
+      trackLeadSuccess({
+        email: data.email,
+        phone: data.phone,
+        name: data.name
+      });
+      
       const whatsappNumber = "554733084390";
       const whatsappMessage = encodeURIComponent(
         `Ola! Vim atraves do site Realizzati Moveis\n\n` +
@@ -51,6 +60,7 @@ const ThankYou = () => {
     // Redirecionar para WhatsApp após 3 segundos
     const redirectTimer = setTimeout(() => {
       if (whatsappUrl) {
+        trackWhatsAppClick(whatsappUrl);
         window.location.href = whatsappUrl;
       }
     }, 3000);
@@ -63,6 +73,7 @@ const ThankYou = () => {
 
   const handleWhatsAppClick = () => {
     if (whatsappUrl) {
+      trackWhatsAppClick(whatsappUrl);
       window.location.href = whatsappUrl;
     }
   };
