@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useToast } from "@/hooks/use-toast";
 import { Phone, Mail, MapPin, Tag, CreditCard } from "lucide-react";
 import { z } from "zod";
+import { getAttributionData } from "@/lib/attribution";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, { message: "Nome é obrigatório" }).max(100)
@@ -42,6 +43,9 @@ const LeadForm = () => {
       // Salvar dados no sessionStorage
       sessionStorage.setItem('leadFormData', JSON.stringify(validatedData));
       
+      // Capturar dados de atribuição de marketing e cookies
+      const attribution = getAttributionData();
+      
       // Enviar os dados do lead em tempo real para o Firestore na nuvem
       try {
         await fetch(
@@ -59,6 +63,17 @@ const LeadForm = () => {
                 email: { stringValue: validatedData.email },
                 message: { stringValue: validatedData.message || "" },
                 createdAt: { stringValue: new Date().toISOString() },
+                utm_source: { stringValue: attribution.utm_source },
+                utm_medium: { stringValue: attribution.utm_medium },
+                utm_campaign: { stringValue: attribution.utm_campaign },
+                utm_content: { stringValue: attribution.utm_content },
+                utm_term: { stringValue: attribution.utm_term },
+                gclid: { stringValue: attribution.gclid },
+                fbclid: { stringValue: attribution.fbclid },
+                fbp: { stringValue: attribution.fbp },
+                fbc: { stringValue: attribution.fbc },
+                user_agent: { stringValue: attribution.user_agent },
+                page_url: { stringValue: attribution.page_url },
               },
             }),
           }
