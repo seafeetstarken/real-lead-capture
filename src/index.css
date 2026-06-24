@@ -8,73 +8,73 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 40 40% 98%;
-    --foreground: 28 39% 17%;
+    --background: 14 25% 98%;
+    --foreground: 14 25% 17%;
 
     --card: 0 0% 100%;
-    --card-foreground: 28 39% 17%;
+    --card-foreground: 14 25% 17%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 28 39% 17%;
+    --popover-foreground: 14 25% 17%;
 
-    --primary: 38 35% 60%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 31 36% 64%;
+    --primary-foreground: 14 25% 17%;
 
-    --secondary: 28 39% 17%;
+    --secondary: 14 25% 17%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 40 20% 94%;
-    --muted-foreground: 28 20% 45%;
+    --muted: 14 15% 94%;
+    --muted-foreground: 14 15% 45%;
 
-    --accent: 28 39% 17%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 31 36% 64%;
+    --accent-foreground: 14 25% 17%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 40 15% 88%;
-    --input: 40 15% 88%;
-    --ring: 38 35% 60%;
+    --border: 31 20% 85%;
+    --input: 31 20% 85%;
+    --ring: 31 36% 64%;
 
     --radius: 0.75rem;
 
     /* Custom tokens for Realizzati luxury design */
-    --gradient-primary: linear-gradient(135deg, hsl(38 35% 60%), hsl(38 40% 70%));
-    --gradient-accent: linear-gradient(135deg, hsl(28 39% 17%), hsl(28 35% 25%));
-    --gradient-hero: linear-gradient(135deg, hsl(28 39% 17% / 0.85), hsl(38 35% 60% / 0.3));
-    --shadow-luxury: 0 25px 70px -20px hsl(38 35% 40% / 0.35);
-    --shadow-card: 0 8px 32px -4px hsl(0 0% 0% / 0.12);
-    --shadow-glass: 0 8px 32px 0 hsl(0 0% 0% / 0.15);
+    --gradient-primary: linear-gradient(135deg, hsl(31 36% 64%), hsl(31 46% 74%));
+    --gradient-accent: linear-gradient(135deg, hsl(14 25% 17%), hsl(14 20% 25%));
+    --gradient-hero: linear-gradient(135deg, hsl(14 25% 17% / 0.9), hsl(31 36% 64% / 0.25));
+    --shadow-luxury: 0 20px 50px -15px hsl(31 36% 64% / 0.4);
+    --shadow-card: 0 8px 32px -4px hsl(14 25% 10% / 0.12);
+    --shadow-glass: 0 8px 32px 0 hsl(14 25% 10% / 0.15);
   }
 
   .dark {
-    --background: 222 47% 11%;
+    --background: 14 25% 10%;
     --foreground: 0 0% 100%;
 
-    --card: 222 47% 11%;
+    --card: 14 25% 12%;
     --card-foreground: 0 0% 100%;
 
-    --popover: 222 47% 11%;
+    --popover: 14 25% 12%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 0 0% 100%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 31 36% 64%;
+    --primary-foreground: 14 25% 17%;
 
-    --secondary: 40 85% 55%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 14 25% 17%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 217 33% 18%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 14 20% 18%;
+    --muted-foreground: 14 10% 70%;
 
-    --accent: 40 95% 50%;
-    --accent-foreground: 222 47% 11%;
+    --accent: 31 36% 64%;
+    --accent-foreground: 14 25% 17%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 0 0% 100%;
+    --border: 14 20% 20%;
+    --input: 14 20% 20%;
+    --ring: 31 36% 64%;
   }
 }
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import heroBackground from "@/assets/hero-bg.jpg";
-import logo from "@/assets/realizzati-logo-vertical.png";
+import logo from "@/assets/logo-vertical-light.png";
 import { ChevronDown } from "lucide-react";
 
 const Hero = () => {
@@ -48,17 +48,16 @@ const Hero = () => {
           <img
             src={logo}
             alt="Realizzati Móveis"
-            className="h-32 md:h-40 brightness-0 invert drop-shadow-2xl"
+            className="h-32 md:h-40 drop-shadow-2xl"
           />
         </div>
 
         <h1 className="mb-6 font-serif text-5xl font-bold leading-tight md:text-7xl lg:text-8xl animate-fade-in text-shadow-lg tracking-tight">
-          Móveis Sob Medida de Alto Padrão
+          Móveis Planejados <span className="text-primary italic">Sob Medida</span>
         </h1>
         <p className="mx-auto mb-12 max-w-3xl text-lg md:text-2xl text-white/90 animate-fade-in font-light leading-relaxed">
-          Transforme seus ambientes com móveis exclusivos, projetados especialmente
-          para você. Qualidade incomparável, design sofisticado e acabamento
-          perfeito.
+          A exatidão da execução industrial unida à sofisticação de acabamentos finos. 
+          Cavas usinadas, veios de madeira contínuos e alinhamentos geométricos perfeitos para projetos exigentes.
         </p>
 
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center animate-fade-in">
@@ -67,7 +66,7 @@ const Hero = () => {
             onClick={scrollToForm}
             className="shimmer text-lg font-semibold shadow-luxury px-8 py-6 text-xl"
           >
-            Solicitar Orçamento Grátis
+            Falar com Projetista Especialista
           </Button>
           <Button
             size="lg"
@@ -75,7 +74,7 @@ const Hero = () => {
             onClick={scrollToAmbientes}
             className="text-lg font-semibold bg-white/10 border-white/30 text-white hover:bg-white/20 px-8 py-6 text-xl backdrop-blur-sm"
           >
-            Conhecer Ambientes
+            Ver Ambientes Planejados
           </Button>
         </div>
 
@@ -83,12 +82,12 @@ const Hero = () => {
         <div className="mt-12 flex flex-col gap-3 items-center animate-fade-in">
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30">
             <span className="text-primary font-semibold text-base md:text-lg">
-              À vista tem 10% de desconto
+              Condições especiais: 10% de desconto sob investimento à vista
             </span>
           </div>
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
             <span className="text-white/90 font-medium text-sm md:text-base">
-              Parcelamos em até 24x no cartão de crédito sem entrada com juros de menos 1% ao mês
+              Plano de parcelamento personalizado em até 24x sem entrada (taxas sob consulta abaixo de 1% a.m.)
             </span>
           </div>
         </div>

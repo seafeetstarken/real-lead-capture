@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import logo from "@/assets/realizzati-logo-horizontal.png";
+import logo from "@/assets/logo-horizontal-light.png";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass shadow-lg py-3" : "bg-transparent py-6"
+        scrolled ? "bg-secondary/90 backdrop-blur-md shadow-lg py-3 border-b border-primary/10" : "bg-transparent py-6"
       }`}
     >
       <div className="container mx-auto px-4">

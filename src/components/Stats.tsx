@@ -9,17 +9,17 @@ const stats = [
   {
     icon: Home,
     value: "500+",
-    label: "Projetos Realizados",
+    label: "Projetos Entregues",
   },
   {
     icon: Users,
     value: "100%",
-    label: "Clientes Satisfeitos",
+    label: "Medição Digital a Laser",
   },
   {
     icon: Sparkles,
-    value: "Alto Padrão",
-    label: "Qualidade Premium",
+    value: "5 Anos",
+    label: "Garantia Estrutural",
   },
 ];
 

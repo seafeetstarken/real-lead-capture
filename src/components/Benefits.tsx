@@ -3,23 +3,23 @@ import { Ruler, Sparkles, Users, Award } from "lucide-react";
 const benefits = [
   {
     icon: Ruler,
-    title: "Projeto Sob Medida",
-    description: "Cada móvel é projetado exclusivamente para seu espaço, aproveitando cada centímetro com inteligência."
+    title: "Geometria Livre",
+    description: "Mobiliário planejado adaptado ao milímetro exigido pelo projeto arquitetônico, sem as limitações de modulação engessada."
   },
   {
     icon: Sparkles,
-    title: "Alto Padrão",
-    description: "Marcenaria 4.0 com máquinas CNC e softwares inteligentes que garantem acabamento impecável e encaixes milimétricos."
+    title: "Marcenaria de Precisão",
+    description: "Processo digital com usinagem CNC computadorizada, assegurando cavas limpas e alinhamentos geométricos impecáveis."
   },
   {
     icon: Users,
-    title: "15 Anos de Experiência",
-    description: "Experiência consolidada no Médio Vale e Litoral de SC, com centenas de projetos realizados."
+    title: "Rastreabilidade e Prazos",
+    description: "Garantia contratual de pontualidade com cronogramas e relatórios de progresso transparentes em cada etapa."
   },
   {
     icon: Award,
-    title: "Excelência Garantida",
-    description: "Atendimento personalizado e acompanhamento em todas as etapas do seu projeto."
+    title: "Suporte Técnico Ativo",
+    description: "Garantia estrutural de 5 anos com suporte pós-venda direto para regulagens e manutenção preventiva de longo prazo."
   }
 ];
 
@@ -29,11 +29,10 @@ const Benefits = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-20 reveal">
           <h2 className="text-5xl md:text-6xl font-serif font-bold text-foreground mb-6 tracking-tight">
-            Por Que Escolher a Realizzati?
+            Rigor Técnico e Engenharia de Detalhe
           </h2>
           <p className="text-muted-foreground text-xl max-w-3xl mx-auto font-light leading-relaxed">
-            Mais de uma década de experiência criando móveis exclusivos que
-            transformam ambientes em obras de arte.
+            A segurança e consistência de uma indústria moderna unidas à exclusividade e refino da marcenaria fina sob medida.
           </p>
         </div>
 

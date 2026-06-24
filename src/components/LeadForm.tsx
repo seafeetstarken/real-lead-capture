@@ -67,12 +67,11 @@ const LeadForm = () => {
           {/* Contact Info */}
           <div className="text-foreground reveal">
             <h2 className="text-5xl md:text-6xl font-serif font-bold mb-8 tracking-tight">
-              Agende seu Orçamento
+              Estudo Técnico do seu Espaço
             </h2>
             <p className="text-xl mb-12 text-muted-foreground font-light leading-relaxed">
-              Entre em contato conosco e transforme seus ambientes com móveis sob
-              medida de alto padrão. Nossa equipe está pronta para criar o projeto
-              dos seus sonhos.
+              Fale com um projetista especialista em alto padrão e inicie a viabilidade técnica do seu mobiliário sob medida. 
+              Analisamos seu projeto arquitetônico, cronogramas de obra e alinhamentos milimétricos.
             </p>
 
             <div className="space-y-8">
@@ -173,7 +172,7 @@ const LeadForm = () => {
                   size="lg"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Enviando..." : "Enviar Solicitação"}
+                  {isSubmitting ? "Enviando..." : "Iniciar Estudo de Viabilidade"}
                 </Button>
               </form>
             </CardContent>

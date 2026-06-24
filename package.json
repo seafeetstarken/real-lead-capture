@@ -8,7 +8,8 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "tunnel": "ssh -R 80:127.0.0.1:8080 nokey@localhost.run"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2 } from "lucide-react";
-import logoHorizontal from "@/assets/realizzati-logo-horizontal.png";
+import logoHorizontal from "@/assets/logo-horizontal-dark.png";
 
 const ThankYou = () => {
   const navigate = useNavigate();

@@ -1,5 +1,5 @@
 import { Phone, Mail, MapPin } from "lucide-react";
-import logo from "@/assets/realizzati-logo-horizontal.png";
+import logo from "@/assets/logo-horizontal-light.png";
 
 const Footer = () => {
   return (
@@ -10,7 +10,7 @@ const Footer = () => {
             <img
               src={logo}
               alt="Realizzati Móveis"
-              className="h-12 mb-6 brightness-0 invert"
+              className="h-12 mb-6"
             />
             <p className="text-secondary-foreground/80 leading-relaxed">
               Transformamos casas em lares únicos com móveis sob medida de alto padrão há mais de 15 anos.
