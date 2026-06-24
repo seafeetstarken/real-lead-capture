@@ -1,3 +1,8 @@
+# Environment variables (sensitive data - never commit)
+.env
+.env.local
+.env.*.local
+
 # Logs
 logs
 *.log
