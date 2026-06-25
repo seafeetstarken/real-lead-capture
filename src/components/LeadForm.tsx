@@ -120,16 +120,16 @@ const LeadForm = () => {
   };
 
   return (
-    <section id="lead-form" className="py-6 md:py-24 bg-background scroll-mt-20">
+    <section id="lead-form" className="py-12 md:py-24 bg-background scroll-mt-20">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Contact Info */}
           <div className="text-foreground reveal">
-            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-3 md:mb-8 tracking-tight text-center lg:text-left">
-              Solicitar Orçamento Grátis
+            <h2 className="text-5xl md:text-6xl font-serif font-bold text-foreground mb-6 tracking-tight text-center lg:text-left">
+              Seu Projeto Exclusivo
             </h2>
             <p className="hidden md:block text-base sm:text-lg md:text-xl mb-6 md:mb-12 text-muted-foreground font-light leading-relaxed">
-              Fale com um projetista especializado e receba o orçamento detalhado dos seus móveis sob medida. Sem compromisso, com atendimento rápido.
+              Fale com um projetista especializado e receba o detalhamento dos seus ambientes sob medida. Sem compromisso, com atendimento rápido.
             </p>
 
             <div className="hidden lg:block space-y-8">
@@ -165,12 +165,14 @@ const LeadForm = () => {
             </div>
           </div>
 
-          {/* Form */}
-          <Card className="shadow-glass glass border-0 reveal">
-            <CardContent className="p-5 md:p-10">
+          {/* Form with Double-Bezel (Chanfrado) design system rules */}
+          <Card className="shadow-luxury bg-secondary border border-primary/20 rounded-[2rem] p-1.5 reveal">
+            <CardContent className="bg-[#1D1311]/55 border border-primary/10 rounded-[1.8rem] p-5 md:p-10 text-white">
               <form onSubmit={handleSubmit} className="space-y-4 md:space-y-7">
                 <div>
-                  <Label htmlFor="name" className="text-sm md:text-base font-semibold">Nome Completo</Label>
+                  <Label htmlFor="name" className="text-xs font-semibold tracking-wider text-primary uppercase block mb-1.5">
+                    Nome Completo
+                  </Label>
                   <Input
                     id="name"
                     type="text"
@@ -179,12 +181,14 @@ const LeadForm = () => {
                     placeholder="Seu nome completo"
                     required
                     maxLength={100}
-                    className="mt-1 md:mt-2 h-10 md:h-12 text-sm md:text-base"
+                    className="mt-1 bg-[#1D1311]/55 border border-primary/20 rounded-lg px-4 h-10 md:h-12 text-sm md:text-base text-white placeholder-gray-500 focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary transition-all duration-300"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="phone" className="text-sm md:text-base font-semibold">Telefone/WhatsApp</Label>
+                  <Label htmlFor="phone" className="text-xs font-semibold tracking-wider text-primary uppercase block mb-1.5">
+                    Telefone / WhatsApp
+                  </Label>
                   <Input
                     id="phone"
                     type="tel"
@@ -193,12 +197,14 @@ const LeadForm = () => {
                     placeholder="(00) 00000-0000"
                     required
                     maxLength={20}
-                    className="mt-1 md:mt-2 h-10 md:h-12 text-sm md:text-base"
+                    className="mt-1 bg-[#1D1311]/55 border border-primary/20 rounded-lg px-4 h-10 md:h-12 text-sm md:text-base text-white placeholder-gray-500 focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary transition-all duration-300"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="message" className="text-sm md:text-base font-semibold">Mensagem</Label>
+                  <Label htmlFor="message" className="text-xs font-semibold tracking-wider text-primary uppercase block mb-1.5">
+                    Mensagem
+                  </Label>
                   <Textarea
                     id="message"
                     value={formData.message}
@@ -206,17 +212,17 @@ const LeadForm = () => {
                     placeholder="Descreva seu projeto de móveis sob medida ou ambiente que deseja planejar"
                     rows={3}
                     maxLength={1000}
-                    className="mt-1 md:mt-2 text-sm md:text-base"
+                    className="mt-1 bg-[#1D1311]/55 border border-primary/20 rounded-lg px-4 py-3 text-sm md:text-base text-white placeholder-gray-500 focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary transition-all duration-300"
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full shimmer text-base md:text-lg font-semibold py-5 md:py-7 animate-pulse hover:animate-none h-auto"
+                  className="shimmer w-full text-secondary font-bold py-4 rounded-lg shadow-luxury hover:scale-[1.01] active:scale-[0.99] transition-transform duration-200 text-sm tracking-wider uppercase mt-4 h-auto"
                   size="lg"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Enviando..." : "Solicitar Orçamento Grátis"}
+                  {isSubmitting ? "Enviando..." : "Solicitar Orçamento"}
                 </Button>
               </form>
             </CardContent>
