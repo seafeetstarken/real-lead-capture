@@ -18,7 +18,7 @@ const Hero = () => {
   }, []);
 
   const scrollToForm = () => {
-    trackCtaClick("Falar com Projetista Especialista", "Hero");
+    trackCtaClick("Falar com Arquiteta Especialista", "Hero");
     document.getElementById("lead-form")?.scrollIntoView({ 
       behavior: "smooth",
       block: "start"
@@ -28,9 +28,9 @@ const Hero = () => {
   const handleWhatsAppDirect = () => {
     const whatsappNumber = "554733084390";
     const message = encodeURIComponent(
-      "Olá! Vi o site da Realizzati Móveis e gostaria de falar com um projetista no WhatsApp."
+      "Olá! Vi o site da Realizzati Móveis e gostaria de falar com a arquiteta especialista no WhatsApp."
     );
-    const url = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
+    const url = `https://wa.me/${whatsappNumber}?text=${message}`;
     trackWhatsAppClick(url);
     window.location.href = url;
   };
@@ -74,7 +74,7 @@ const Hero = () => {
             onClick={scrollToForm}
             className="shimmer text-base sm:text-lg md:text-xl font-semibold shadow-luxury px-6 py-5 md:px-8 md:py-6 h-auto w-full sm:w-auto whitespace-normal text-center leading-normal"
           >
-            Falar com Projetista Especialista
+            Falar com Arquiteta Especialista
           </Button>
           <Button
             size="lg"

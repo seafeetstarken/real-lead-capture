@@ -91,7 +91,7 @@ const LeadForm = () => {
         `Telefone: ${validatedData.phone}\n` +
         `Mensagem: ${validatedData.message || "Olá, gostaria de solicitar um orçamento!"}`
       );
-      const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${whatsappMessage}`;
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
       // Rastrear clique do WhatsApp
       trackWhatsAppClick(whatsappUrl);
@@ -129,7 +129,7 @@ const LeadForm = () => {
               Seu Projeto Exclusivo
             </h2>
             <p className="hidden md:block text-base sm:text-lg md:text-xl mb-6 md:mb-12 text-muted-foreground font-light leading-relaxed">
-              Fale com um projetista especializado e receba o detalhamento dos seus ambientes sob medida. Sem compromisso, com atendimento rápido.
+              Fale com a nossa arquiteta especialista e receba o detalhamento dos seus ambientes sob medida. Sem compromisso, com atendimento rápido.
             </p>
 
             <div className="hidden lg:block space-y-8">

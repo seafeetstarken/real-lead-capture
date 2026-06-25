@@ -4,9 +4,9 @@ const FloatingWhatsApp = () => {
   const handleClick = () => {
     const whatsappNumber = "554733084390";
     const message = encodeURIComponent(
-      "Olá! Gostaria de falar com um projetista sobre móveis sob medida."
+      "Olá! Gostaria de falar com a arquiteta especialista sobre móveis sob medida."
     );
-    const url = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
+    const url = `https://wa.me/${whatsappNumber}?text=${message}`;
     trackWhatsAppClick(url);
     window.location.href = url;
   };
