@@ -30,7 +30,7 @@ const Hero = () => {
     const message = encodeURIComponent(
       "Olá! Vi o site da Realizzati Móveis e gostaria de falar com um projetista no WhatsApp."
     );
-    const url = `https://wa.me/${whatsappNumber}?text=${message}`;
+    const url = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
     trackWhatsAppClick(url);
     window.location.href = url;
   };

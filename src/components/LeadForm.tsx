@@ -91,7 +91,7 @@ const LeadForm = () => {
         `Telefone: ${validatedData.phone}\n` +
         `Mensagem: ${validatedData.message || "Olá, gostaria de solicitar um orçamento!"}`
       );
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${whatsappMessage}`;
 
       // Rastrear clique do WhatsApp
       trackWhatsAppClick(whatsappUrl);
@@ -120,15 +120,15 @@ const LeadForm = () => {
   };
 
   return (
-    <section id="lead-form" className="py-12 md:py-24 bg-background scroll-mt-20">
+    <section id="lead-form" className="py-6 md:py-24 bg-background scroll-mt-20">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-16 items-start">
           {/* Contact Info */}
           <div className="text-foreground reveal">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-4 md:mb-8 tracking-tight">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-3 md:mb-8 tracking-tight text-center lg:text-left">
               Solicitar Orçamento Grátis
             </h2>
-            <p className="text-base sm:text-lg md:text-xl mb-6 md:mb-12 text-muted-foreground font-light leading-relaxed">
+            <p className="hidden md:block text-base sm:text-lg md:text-xl mb-6 md:mb-12 text-muted-foreground font-light leading-relaxed">
               Fale com um projetista especializado e receba o orçamento detalhado dos seus móveis sob medida. Sem compromisso, com atendimento rápido.
             </p>
 
@@ -167,10 +167,10 @@ const LeadForm = () => {
 
           {/* Form */}
           <Card className="shadow-glass glass border-0 reveal">
-            <CardContent className="p-6 sm:p-10">
-              <form onSubmit={handleSubmit} className="space-y-7">
+            <CardContent className="p-5 md:p-10">
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-7">
                 <div>
-                  <Label htmlFor="name" className="text-base font-semibold">Nome Completo</Label>
+                  <Label htmlFor="name" className="text-sm md:text-base font-semibold">Nome Completo</Label>
                   <Input
                     id="name"
                     type="text"
@@ -179,12 +179,12 @@ const LeadForm = () => {
                     placeholder="Seu nome completo"
                     required
                     maxLength={100}
-                    className="mt-2 h-12 text-base"
+                    className="mt-1 md:mt-2 h-10 md:h-12 text-sm md:text-base"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="phone" className="text-base font-semibold">Telefone/WhatsApp</Label>
+                  <Label htmlFor="phone" className="text-sm md:text-base font-semibold">Telefone/WhatsApp</Label>
                   <Input
                     id="phone"
                     type="tel"
@@ -193,26 +193,26 @@ const LeadForm = () => {
                     placeholder="(00) 00000-0000"
                     required
                     maxLength={20}
-                    className="mt-2 h-12 text-base"
+                    className="mt-1 md:mt-2 h-10 md:h-12 text-sm md:text-base"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="message" className="text-base font-semibold">Mensagem</Label>
+                  <Label htmlFor="message" className="text-sm md:text-base font-semibold">Mensagem</Label>
                   <Textarea
                     id="message"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Descreva seu projeto de móveis sob medida ou ambiente que deseja planejar"
-                    rows={5}
+                    rows={3}
                     maxLength={1000}
-                    className="mt-2 text-base"
+                    className="mt-1 md:mt-2 text-sm md:text-base"
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full shimmer text-lg font-semibold py-7 animate-pulse hover:animate-none"
+                  className="w-full shimmer text-base md:text-lg font-semibold py-5 md:py-7 animate-pulse hover:animate-none h-auto"
                   size="lg"
                   disabled={isSubmitting}
                 >
