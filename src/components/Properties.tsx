@@ -10,22 +10,22 @@ const ambientes = [
     image: cozinha1,
     title: "Cozinhas Sob Medida",
     icon: ChefHat,
-    features: ["Cavas Usinadas Integradas", "Sensação Tátil Suave de Uso", "Aproveitamento Técnico"],
-    description: "Projetos que equilibram ergonomia and design contemporâneo. Mobiliário estruturado com sistemas de amortecimento e suavidade de movimento integrados."
+    features: ["Design Funcional", "Bancadas Exclusivas", "Aproveitamento Inteligente"],
+    description: "Transforme sua cozinha no coração do seu lar. Projetos completos que combinam funcionalidade, elegância e aproveitamento inteligente de cada espaço."
   },
   {
     image: quarto1,
-    title: "Dormitórios Técnicos",
+    title: "Quartos Sob Medida",
     icon: Bed,
-    features: ["Iluminação Técnica Embutida", "MDF de Alta Densidade", "Painéis Acústicos"],
-    description: "Quartos planejados concebidos para o bem-estar e repouso absoluto. Integração perfeita de texturas nobres e alinhamentos geométricos rigorosos."
+    features: ["Cabeceiras Exclusivas", "Armários Embutidos", "Design Personalizado"],
+    description: "Transforme seu quarto em um refúgio perfeito com móveis sob medida que combinam conforto e estilo."
   },
   {
     image: closet1,
-    title: "Closets Integrados",
+    title: "Closets Sob Medida",
     icon: Shirt,
-    features: ["Cabideiros Iluminados LED", "Corrediças Ocultas Robustas", "Divisórias Customizadas"],
-    description: "Sistemas organizadores sofisticados sob medida. Gaveteiros aveludados e ferragens internas de longa durabilidade projetados para máxima durabilidade."
+    features: ["Iluminação em LED", "Ferragens de Alta Qualidade", "Moderno e Prático"],
+    description: "Closets planejados em MDF com design moderno, iluminação LED integrada e máxima funcionalidade para organizar seu guarda-roupa com elegância."
   }
 ];
 

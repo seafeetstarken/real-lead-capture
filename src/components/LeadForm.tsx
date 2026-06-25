@@ -1,32 +1,29 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Phone, Mail, MapPin, Tag, CreditCard } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import { z } from "zod";
 import { getAttributionData } from "@/lib/attribution";
+import { trackLeadSuccess, trackWhatsAppClick } from "@/lib/gtm";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, { message: "Nome é obrigatório" }).max(100)
     .regex(/^[a-zA-ZÀ-ÿ\s'-]+$/, { message: "Nome contém caracteres inválidos" }),
   phone: z.string().trim().min(10, { message: "Telefone inválido" }).max(20)
     .regex(/^[\d()\s-]+$/, { message: "Telefone contém caracteres inválidos" }),
-  email: z.string().trim().email({ message: "Email inválido" }).max(255),
   message: z.string().trim().max(1000)
     .regex(/^[^<>]*$/, { message: "Mensagem contém caracteres não permitidos" }),
 });
 
 const LeadForm = () => {
   const { toast } = useToast();
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    email: "",
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,9 +36,6 @@ const LeadForm = () => {
       
       // Validate form data
       const validatedData = contactSchema.parse(formData);
-      
-      // Salvar dados no sessionStorage
-      sessionStorage.setItem('leadFormData', JSON.stringify(validatedData));
       
       // Capturar dados de atribuição de marketing e cookies
       const attribution = getAttributionData();
@@ -60,34 +54,58 @@ const LeadForm = () => {
                 tenant: { stringValue: "realizzati_moveis" },
                 name: { stringValue: validatedData.name },
                 phone: { stringValue: validatedData.phone },
-                email: { stringValue: validatedData.email },
+                email: { stringValue: "" },
                 message: { stringValue: validatedData.message || "" },
                 createdAt: { stringValue: new Date().toISOString() },
-                utm_source: { stringValue: attribution.utm_source },
-                utm_medium: { stringValue: attribution.utm_medium },
-                utm_campaign: { stringValue: attribution.utm_campaign },
-                utm_content: { stringValue: attribution.utm_content },
-                utm_term: { stringValue: attribution.utm_term },
-                gclid: { stringValue: attribution.gclid },
-                fbclid: { stringValue: attribution.fbclid },
-                fbp: { stringValue: attribution.fbp },
-                fbc: { stringValue: attribution.fbc },
-                user_agent: { stringValue: attribution.user_agent },
-                page_url: { stringValue: attribution.page_url },
+                utm_source: { stringValue: attribution.utm_source || "" },
+                utm_medium: { stringValue: attribution.utm_medium || "" },
+                utm_campaign: { stringValue: attribution.utm_campaign || "" },
+                utm_content: { stringValue: attribution.utm_content || "" },
+                utm_term: { stringValue: attribution.utm_term || "" },
+                gclid: { stringValue: attribution.gclid || "" },
+                fbclid: { stringValue: attribution.fbclid || "" },
+                fbp: { stringValue: attribution.fbp || "" },
+                fbc: { stringValue: attribution.fbc || "" },
+                user_agent: { stringValue: attribution.user_agent || "" },
+                page_url: { stringValue: attribution.page_url || "" },
               },
             }),
           }
         );
       } catch (cloudError) {
-        // Loga o erro mas não impede a navegação para não estragar a experiência do usuário
         console.error("Falha ao persistir lead no Firestore:", cloudError);
       }
+
+      // Rastreamento GTM: Conversão com Enhanced Conversions
+      trackLeadSuccess({
+        email: "",
+        phone: validatedData.phone,
+        name: validatedData.name
+      });
       
+      // Gerar link de WhatsApp dinâmico
+      const whatsappNumber = "554733084390";
+      const whatsappMessage = encodeURIComponent(
+        `Olá! Vim através do site da Realizzati Móveis\n\n` +
+        `Nome: ${validatedData.name}\n` +
+        `Telefone: ${validatedData.phone}\n` +
+        `Mensagem: ${validatedData.message || "Olá, gostaria de solicitar um orçamento!"}`
+      );
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+      // Rastrear clique do WhatsApp
+      trackWhatsAppClick(whatsappUrl);
+      
+      toast({
+        title: "Dados enviados!",
+        description: "Iniciando conversa no WhatsApp...",
+      });
+
       // Reset form
-      setFormData({ name: "", phone: "", email: "", message: "" });
+      setFormData({ name: "", phone: "", message: "" });
       
-      // Navegar para página de obrigado
-      navigate('/obrigado');
+      // Redirecionar diretamente para o WhatsApp
+      window.location.href = whatsappUrl;
     } catch (error) {
       if (error instanceof z.ZodError) {
         toast({
@@ -108,11 +126,10 @@ const LeadForm = () => {
           {/* Contact Info */}
           <div className="text-foreground reveal">
             <h2 className="text-5xl md:text-6xl font-serif font-bold mb-8 tracking-tight">
-              Estudo Técnico do seu Espaço
+              Solicitar Orçamento Grátis
             </h2>
             <p className="text-xl mb-12 text-muted-foreground font-light leading-relaxed">
-              Fale com um projetista especialista em alto padrão e inicie a viabilidade técnica do seu mobiliário sob medida. 
-              Analisamos seu projeto arquitetônico, cronogramas de obra e alinhamentos milimétricos.
+              Fale com um projetista especializado e receba o orçamento detalhado dos seus móveis sob medida. Sem compromisso, com atendimento rápido.
             </p>
 
             <div className="space-y-8">
@@ -181,20 +198,6 @@ const LeadForm = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="email" className="text-base font-semibold">E-mail</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="seu@email.com"
-                    required
-                    maxLength={255}
-                    className="mt-2 h-12 text-base"
-                  />
-                </div>
-
-                <div>
                   <Label htmlFor="message" className="text-base font-semibold">Mensagem</Label>
                   <Textarea
                     id="message"
@@ -209,11 +212,11 @@ const LeadForm = () => {
 
                 <Button
                   type="submit"
-                  className="w-full shimmer text-lg font-semibold py-7"
+                  className="w-full shimmer text-lg font-semibold py-7 animate-pulse hover:animate-none"
                   size="lg"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Enviando..." : "Iniciar Estudo de Viabilidade"}
+                  {isSubmitting ? "Enviando..." : "Solicitar Orçamento Grátis"}
                 </Button>
               </form>
             </CardContent>
