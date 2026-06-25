@@ -120,19 +120,19 @@ const LeadForm = () => {
   };
 
   return (
-    <section id="lead-form" className="py-24 bg-background scroll-mt-20">
+    <section id="lead-form" className="py-12 md:py-24 bg-background scroll-mt-20">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Contact Info */}
           <div className="text-foreground reveal">
-            <h2 className="text-5xl md:text-6xl font-serif font-bold mb-8 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-4 md:mb-8 tracking-tight">
               Solicitar Orçamento Grátis
             </h2>
-            <p className="text-xl mb-12 text-muted-foreground font-light leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl mb-6 md:mb-12 text-muted-foreground font-light leading-relaxed">
               Fale com um projetista especializado e receba o orçamento detalhado dos seus móveis sob medida. Sem compromisso, com atendimento rápido.
             </p>
 
-            <div className="space-y-8">
+            <div className="hidden lg:block space-y-8">
               <div className="flex items-start gap-5 group">
                 <div className="p-4 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-all duration-300">
                   <Phone className="w-7 h-7 text-primary" />
@@ -167,7 +167,7 @@ const LeadForm = () => {
 
           {/* Form */}
           <Card className="shadow-glass glass border-0 reveal">
-            <CardContent className="p-10">
+            <CardContent className="p-6 sm:p-10">
               <form onSubmit={handleSubmit} className="space-y-7">
                 <div>
                   <Label htmlFor="name" className="text-base font-semibold">Nome Completo</Label>
