@@ -1,73 +1,39 @@
-# Welcome to your Lovable project
+# Realizzati Móveis - Landing Page
 
-## Project info
+Landing Page de alta conversão para captação de leads qualificados da Realizzati Móveis, com foco na venda de móveis planejados e sob medida de alto padrão na região do Médio Vale e Litoral de Santa Catarina.
 
-**URL**: https://lovable.dev/projects/c776f8fa-abcc-431b-93bd-2d3a3bc65fbe
+## 🛠️ Tecnologias Utilizadas
 
-## How can I edit this code?
+- **Vite** + **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **shadcn/ui**
+- **Google Tag Manager (GTM)** para rastreamento avançado de conversões.
 
-There are several ways of editing your application.
+## 🚀 Como Executar Localmente
 
-**Use Lovable**
+1. Instale as dependências:
+   ```bash
+   npm install
+   ```
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/c776f8fa-abcc-431b-93bd-2d3a3bc65fbe) and start prompting.
+2. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   ```
 
-Changes made via Lovable will be committed automatically to this repo.
+3. Abra o navegador em `http://localhost:8080` (ou a porta indicada no console).
 
-**Use your preferred IDE**
+## 📦 Build para Produção
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+Para gerar a versão compilada e otimizada da aplicação para o deploy em produção:
+```bash
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+A pasta de saída gerada será a `dist`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🌐 Deploy na Vercel
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/c776f8fa-abcc-431b-93bd-2d3a3bc65fbe) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Este projeto está configurado para deploy automático na **Vercel** conectado à branch `main` deste repositório.
+Qualquer alteração empurrada para o repositório disparará automaticamente uma nova compilação e deploy na nuvem.

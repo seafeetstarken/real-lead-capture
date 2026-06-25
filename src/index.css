@@ -171,12 +171,4 @@ All colors MUST be HSL.
   }
 }
 
-/* Ocultar badge "Edit with Lovable" */
-[data-lovable-badge],
-.lovable-badge,
-iframe[src*="lovable"] {
-  display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
+
