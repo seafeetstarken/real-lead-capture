@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import DesignSystem from "./pages/DesignSystem";
+import StarkenTechDashboard from "./pages/StarkenTechDashboard";
 import NotFound from "./pages/NotFound";
 
 import { useEffect } from "react";
@@ -43,6 +44,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/design-system" element={<DesignSystem />} />
+          <Route path="/starken-tech" element={<StarkenTechDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
