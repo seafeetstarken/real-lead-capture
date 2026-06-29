@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realizzati Móveis - Visualizador de Anúncios Google Ads</title>
+  
+  <!-- Fontes do Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0b0f19 0%, #111827 100%);
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --accent-color: #6366f1;
+      --accent-hover: #4f46e5;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      
+      /* Cores do Google Search (Fiel ao original) */
+      --google-bg: #ffffff;
+      --google-text: #202124;
+      --google-link: #1a0dab;
+      --google-url: #202124;
+      --google-desc: #4d5156;
+      --google-sponsored: #202124;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 0.5rem;
+    }
+
+    .logo-badge {
+      background: #c2410c; /* Tom elegante puxado para o marrom/laranja da marca */
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 12px rgba(194, 65, 12, 0.3);
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #f97316, #f43f5e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    @media (min-width: 992px) {
+      main {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+    }
+
+    /* Painel de Controles */
+    .control-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.8rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    label {
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    select {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    select:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+    }
+
+    /* Listas de ativos */
+    .assets-section {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .assets-title {
+      font-size: 1rem;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .badge-count {
+      background: rgba(99, 102, 241, 0.2);
+      color: #a5b4fc;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+    }
+
+    .assets-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-height: 250px;
+      overflow-y: auto;
+      padding-right: 0.3rem;
+    }
+
+    /* Scrollbar estilizada */
+    .assets-list::-webkit-scrollbar {
+      width: 5px;
+    }
+    .assets-list::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .assets-list::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    .asset-item {
+      background: rgba(15, 23, 42, 0.3);
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .asset-item:hover {
+      background: rgba(15, 23, 42, 0.5);
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .asset-text {
+      flex: 1;
+    }
+
+    .pin-badge {
+      font-size: 0.75rem;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .pin-h1 {
+      background: rgba(249, 115, 22, 0.2);
+      color: #fdba74;
+    }
+
+    .pin-h2 {
+      background: rgba(16, 185, 129, 0.2);
+      color: #6ee7b7;
+    }
+
+    .pin-d1 {
+      background: rgba(59, 130, 246, 0.2);
+      color: #93c5fd;
+    }
+
+    /* Painel do Simulador Visual */
+    .preview-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .preview-actions {
+      display: flex;
+      gap: 1rem;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .btn {
+      font-family: inherit;
+      padding: 0.8rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+      border: none;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: var(--accent-color);
+      color: white;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-secondary.active {
+      background: white;
+      color: #0b0f19;
+    }
+
+    /* Celular */
+    .phone-container {
+      background: #111;
+      width: 375px;
+      height: 640px;
+      border-radius: 40px;
+      padding: 12px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 
+                  0 0 0 4px #2e2e2e,
+                  0 0 0 8px #1f1f1f;
+      position: relative;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* Modo Desktop alternativo */
+    .phone-container.desktop-mode {
+      width: 100%;
+      height: auto;
+      min-height: 400px;
+      border-radius: 12px;
+      padding: 24px;
+      background: #1e293b;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .phone-container.desktop-mode::before,
+    .phone-container.desktop-mode .phone-header,
+    .phone-container.desktop-mode .phone-notch {
+      display: none;
+    }
+
+    /* Entalhe do celular (Notch) */
+    .phone-notch {
+      width: 150px;
+      height: 25px;
+      background: #111;
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom-left-radius: 18px;
+      border-bottom-right-radius: 18px;
+      z-index: 10;
+    }
+
+    .phone-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 16px 12px 16px;
+      color: #888;
+      font-size: 0.85rem;
+      font-weight: 500;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .phone-screen {
+      background: #f1f3f4; /* Fundo cinza das buscas do Google */
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      overflow-y: auto;
+      padding: 10px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .phone-container.desktop-mode .phone-screen {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 20px;
+      height: auto;
+      overflow: visible;
+    }
+
+    /* Google Ad Card */
+    .google-ad-card {
+      background: var(--google-bg);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+      font-family: 'Roboto', sans-serif;
+      text-align: left;
+      border: 1px solid #e0e0e0;
+      transition: transform 0.3s;
+    }
+
+    .phone-container.desktop-mode .google-ad-card {
+      max-width: 652px;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+    }
+
+    .ad-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .sponsored-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--google-sponsored);
+    }
+
+    .info-icon {
+      color: #70757a;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+
+    .advertiser-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .advertiser-logo {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #27211e;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.75rem;
+      border: 1px solid #e8eaed;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      background-image: radial-gradient(circle, #2d2623 0%, #1a1513 100%);
+    }
+
+    .advertiser-logo-inner {
+      font-family: 'Outfit', sans-serif;
+      color: #e0a96d; /* Cor dourada clara elegante para o R */
+    }
+
+    .advertiser-details {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .advertiser-name {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--google-text);
+    }
+
+    .advertiser-url {
+      font-size: 0.75rem;
+      color: #5f6368;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 250px;
+    }
+
+    .ad-title {
+      font-size: 1.15rem;
+      color: var(--google-link);
+      line-height: 1.3;
+      margin-bottom: 8px;
+      font-weight: 400;
+      text-decoration: none;
+      display: block;
+      transition: text-decoration 0.2s;
+    }
+
+    .phone-container.desktop-mode .ad-title {
+      font-size: 1.25rem;
+      margin-bottom: 4px;
+    }
+
+    .ad-title:hover {
+      text-decoration: underline;
+    }
+
+    .ad-description {
+      font-size: 0.85rem;
+      color: var(--google-desc);
+      line-height: 1.4;
+    }
+
+    .phone-container.desktop-mode .ad-description {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* Recursos extras - Sitelinks Simulados */
+    .ad-sitelinks {
+      margin-top: 12px;
+      border-top: 1px solid #f1f3f4;
+      padding-top: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .sitelink-item {
+      font-size: 0.85rem;
+    }
+
+    .sitelink-title {
+      color: var(--google-link);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .sitelink-title:hover {
+      text-decoration: underline;
+    }
+
+    /* Animações */
+    @keyframes fadeInAd {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-ad {
+      animation: fadeInAd 0.4s ease forwards;
+    }
+
+    /* Nota informativa */
+    .info-footer {
+      grid-column: 1 / -1;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.2rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .info-footer strong {
+      color: var(--text-main);
+    }
+
+    .info-footer ul {
+      list-style-position: inside;
+      padding-left: 0.5rem;
+    }
+
+    .info-footer li {
+      margin-bottom: 0.3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <div class="logo-badge">R</div>
+      <h1>Realizzati Móveis</h1>
+    </div>
+    <p>Simulador Visual e Combinador do Google Ads</p>
+  </header>
+
+  <main>
+    <!-- Coluna de Controles e Listas -->
+    <div class="control-panel">
+      
+      <div class="form-group">
+        <label for="campaign-select"><i class="fa-solid fa-bullhorn"></i> Campanha</label>
+        <select id="campaign-select">
+          <!-- Inserido dinamicamente -->
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="adgroup-select"><i class="fa-solid fa-layer-group"></i> Grupo de Anúncios</label>
+        <select id="adgroup-select">
+          <!-- Inserido dinamicamente -->
+        </select>
+      </div>
+
+      <div class="assets-section">
+        <div class="assets-title">
+          <span><i class="fa-solid fa-heading"></i> Títulos Cadastrados</span>
+          <span class="badge-count" id="headlines-count">0</span>
+        </div>
+        <ul class="assets-list" id="headlines-list">
+          <!-- Inserido dinamicamente -->
+        </ul>
+      </div>
+
+      <div class="assets-section">
+        <div class="assets-title">
+          <span><i class="fa-solid fa-align-left"></i> Descrições Cadastradas</span>
+          <span class="badge-count" id="descriptions-count">0</span>
+        </div>
+        <ul class="assets-list" id="descriptions-list">
+          <!-- Inserido dinamicamente -->
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Coluna do Simulador Visual -->
+    <div class="preview-panel">
+      
+      <div class="preview-actions">
+        <button class="btn btn-secondary active" id="btn-mobile"><i class="fa-solid fa-mobile-screen-button"></i> Celular</button>
+        <button class="btn btn-secondary" id="btn-desktop"><i class="fa-solid fa-desktop"></i> Computador</button>
+        <button class="btn btn-primary" id="btn-shuffle"><i class="fa-solid fa-shuffle"></i> Embaralhar Combinação</button>
+      </div>
+
+      <!-- Celular Virtual -->
+      <div class="phone-container" id="device-container">
+        <div class="phone-notch"></div>
+        <div class="phone-header">
+          <span>12:40</span>
+          <div style="display: flex; gap: 5px; align-items: center;">
+            <i class="fa-solid fa-signal"></i>
+            <i class="fa-solid fa-wifi"></i>
+            <i class="fa-solid fa-battery-three-quarters"></i>
+          </div>
+        </div>
+        
+        <div class="phone-screen">
+          
+          <!-- Card do Google Ads -->
+          <div class="google-ad-card" id="google-ad-card">
+            
+            <div class="ad-header-row">
+              <div class="advertiser-info">
+                <div class="advertiser-logo">
+                  <span class="advertiser-logo-inner">R</span>
+                </div>
+                <div class="advertiser-details">
+                  <span class="advertiser-name">Realizzati Móveis</span>
+                  <span class="advertiser-url" id="ad-url-display">https://orcamentos.realizzatimoveis.com.br</span>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="sponsored-tag">Patrocinado</span>
+                <i class="fa-solid fa-ellipsis-vertical info-icon"></i>
+              </div>
+            </div>
+
+            <!-- Título do Anúncio (Combinação de H1 | H2 | H3) -->
+            <a href="#" class="ad-title" id="ad-title-display">
+              Móveis Sob Medida Alto Padrão | Realizzati Móveis | Móveis 100% MDF Sob Medida
+            </a>
+
+            <!-- Descrição do Anúncio -->
+            <p class="ad-description" id="ad-desc-display">
+              Marcenaria sob medida de alto padrão. Projetos exatos em 100% MDF com acabamento fino. Entrega no prazo sob contrato e 5 anos de garantia estrutural. Peça seu orçamento.
+            </p>
+
+            <!-- Sitelinks Simulados -->
+            <div class="ad-sitelinks">
+              <div class="sitelink-item">
+                <a href="#" class="sitelink-title">Fale Conosco</a>
+              </div>
+              <div class="sitelink-item">
+                <a href="#" class="sitelink-title">Projetos Executados</a>
+              </div>
+              <div class="sitelink-item">
+                <a href="#" class="sitelink-title">Solicitar Orçamento</a>
+              </div>
+              <div class="sitelink-item">
+                <a href="#" class="sitelink-title">Nossos Diferenciais</a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Rodapé de Apoio Informativo -->
+    <div class="info-footer">
+      <p><strong>💡 Como funcionam as combinações do Google Ads?</strong></p>
+      <p>Você cadastra até <strong>15 títulos</strong> e <strong>4 descrições</strong> em um único anúncio (Anúncio Responsivo de Pesquisa). O Google testa milhares de combinações diferentes de forma dinâmica para mostrar a melhor combinação para cada usuário.</p>
+      <ul>
+        <li><strong>Fixação de Recursos (Pin):</strong> Nós fixamos os títulos principais! O título 1 (H1) sempre trará o gancho do produto/marca (ex: "Móveis Sob Medida Alto Padrão"), e o título 2 (H2) sempre trará a marca "Realizzati Móveis".</li>
+        <li><strong>Terceiro Título (H3):</strong> O Google escolhe livremente um dos outros títulos cadastrados (como benefícios, descontos ou chamadas de ação) para aparecer ao lado quando há espaço na tela.</li>
+        <li><strong>Descrições:</strong> A descrição 1 (D1) está fixada para apresentar a proposta de valor principal, e a descrição 2 (D2) alterna os benefícios adicionais (como garantia, parcelamento e prazo).</li>
+      </ul>
+      <p><em>Use o botão <strong>"Embaralhar Combinação"</strong> acima para simular diferentes versões que o Google Ads gera em tempo real.</em></p>
+    </div>
+  </main>
+
+  <script>
+    // Dados estruturados direto das campanhas ativas
+    const adsData = {
+      "[STARKEN] - Search - Captação - Blumenau": {
+        "[STARKEN] - Geral / Alto Padrão": {
+          "headlines": [
+            { "text": "Móveis Sob Medida Alto Padrão", "pinned": "HEADLINE_1" },
+            { "text": "Realizzati Móveis", "pinned": "HEADLINE_2" },
+            { "text": "Móveis 100% MDF Sob Medida", "pinned": null },
+            { "text": "Execução Exata de Projetos", "pinned": null },
+            { "text": "5 Anos de Garantia Contratual", "pinned": null },
+            { "text": "10% de Desconto À Vista", "pinned": null },
+            { "text": "Entrega no Prazo Garantida", "pinned": null },
+            { "text": "Parcelamento em Até 24x", "pinned": null },
+            { "text": "Agende Seu Orçamento Técnico", "pinned": null },
+            { "text": "Acabamento Fino e Sofisticado", "pinned": null }
+          ],
+          "descriptions": [
+            { "text": "Marcenaria sob medida de alto padrão. Projetos exatos em 100% MDF com acabamento fino.", "pinned": "DESCRIPTION_1" },
+            { "text": "Entrega no prazo sob contrato e 5 anos de garantia estrutural. Peça seu orçamento.", "pinned": null },
+            { "text": "Móveis planejados com ferragens silenciosas e amortecimento. 10% de desconto à vista.", "pinned": null }
+          ],
+          "path1": "Moveis",
+          "path2": "Sob-Medida"
+        },
+        "[STARKEN] - Cozinhas Planejadas": {
+          "headlines": [
+            { "text": "Cozinha Sob Medida Alto Padrão", "pinned": "HEADLINE_1" },
+            { "text": "Cozinha Planejada 100% MDF", "pinned": "HEADLINE_2" },
+            { "text": "Realizzati Móveis", "pinned": null },
+            { "text": "Gavetas Com Amortecedores", "pinned": null },
+            { "text": "Cozinhas de Luxo Sob Medida", "pinned": null },
+            { "text": "10% de Desconto À Vista", "pinned": null },
+            { "text": "Parcelamento em Até 24x", "pinned": null },
+            { "text": "Aproveite Cada Centímetro", "pinned": null },
+            { "text": "Projete a Cozinha dos Sonhos", "pinned": null },
+            { "text": "Orçamento de Cozinha Rápido", "pinned": null }
+          ],
+          "descriptions": [
+            { "text": "Cozinhas planejadas de alto padrão sob medida com ferragens de amortecimento suave.", "pinned": "DESCRIPTION_1" },
+            { "text": "Aproveite cada centímetro com móveis sob medida de alta durabilidade em 100% MDF.", "pinned": null },
+            { "text": "Cozinhas residenciais e gourmets planejadas com perfeição. 10% de desconto à vista.", "pinned": null }
+          ],
+          "path1": "Cozinhas",
+          "path2": "Planejadas"
+        },
+        "[STARKEN] - Quartos e Closets": {
+          "headlines": [
+            { "text": "Quarto Sob Medida Alto Padrão", "pinned": "HEADLINE_1" },
+            { "text": "Closets Planejados Modernos", "pinned": "HEADLINE_2" },
+            { "text": "Realizzati Móveis", "pinned": null },
+            { "text": "Closet Sob Medida 100% MDF", "pinned": null },
+            { "text": "Guarda-Roupa Sob Medida MDF", "pinned": null },
+            { "text": "Otimize o Espaço do Quarto", "pinned": null },
+            { "text": "Gavetas com Corrediças Ocultas", "pinned": null },
+            { "text": "10% de Desconto À Vista", "pinned": null },
+            { "text": "Parcelamento em Até 24x", "pinned": null },
+            { "text": "Suavidade e Amortecimento", "pinned": null }
+          ],
+          "descriptions": [
+            { "text": "Otimize sua rotina com dormitórios e closets planejados em MDF com ferragens robustas.", "pinned": "DESCRIPTION_1" },
+            { "text": "Roupeiros e closets sob medida premium. 5 anos de garantia e pós-venda ativo.", "pinned": null },
+            { "text": "Closets exclusivos com gaveteiros modernos, corrediças ocultas e geometria perfeita.", "pinned": null }
+          ],
+          "path1": "Quartos",
+          "path2": "Closets"
+        }
+      },
+      "[STARKEN] - Search - Captação - Médio Vale (Timbó, Indaial, Rodeio)": {
+        "[STARKEN] - Geral / Alto Padrão": {
+          "headlines": [
+            { "text": "Móveis Sob Medida Alto Padrão", "pinned": "HEADLINE_1" },
+            { "text": "Realizzati Móveis", "pinned": "HEADLINE_2" },
+            { "text": "Móveis 100% MDF Sob Medida", "pinned": null },
+            { "text": "Execução Exata de Projetos", "pinned": null },
+            { "text": "5 Anos de Garantia Contratual", "pinned": null },
+            { "text": "10% de Desconto À Vista", "pinned": null },
+            { "text": "Entrega no Prazo Garantida", "pinned": null },
+            { "text": "Parcelamento em Até 24x", "pinned": null },
+            { "text": "Agende Seu Orçamento Técnico", "pinned": null },
+            { "text": "Acabamento Fino e Sofisticado", "pinned": null }
+          ],
+          "descriptions": [
+            { "text": "Marcenaria sob medida de alto padrão. Projetos exatos em 100% MDF com acabamento fino.", "pinned": "DESCRIPTION_1" },
+            { "text": "Entrega no prazo sob contrato e 5 anos de garantia estrutural. Peça seu orçamento.", "pinned": null },
+            { "text": "Móveis planejados com ferragens silenciosas e amortecimento. 10% de desconto à vista.", "pinned": null }
+          ],
+          "path1": "Moveis",
+          "path2": "Sob-Medida"
+        },
+        "[STARKEN] - Cozinhas Planejadas": {
+          "headlines": [
+            { "text": "Cozinha Sob Medida Alto Padrão", "pinned": "HEADLINE_1" },
+            { "text": "Cozinha Planejada 100% MDF", "pinned": "HEADLINE_2" },
+            { "text": "Realizzati Móveis", "pinned": null },
+            { "text": "Gavetas Com Amortecedores", "pinned": null },
+            { "text": "Cozinhas de Luxo Sob Medida", "pinned": null },
+            { "text": "10% de Desconto À Vista", "pinned": null },
+            { "text": "Parcelamento em Até 24x", "pinned": null },
+            { "text": "Aproveite Cada Centímetro", "pinned": null },
+            { "text": "Projete a Cozinha dos Sonhos", "pinned": null },
+            { "text": "Orçamento de Cozinha Rápido", "pinned": null }
+          ],
+          "descriptions": [
+            { "text": "Cozinhas planejadas de alto padrão sob medida com ferragens de amortecimento suave.", "pinned": "DESCRIPTION_1" },
+            { "text": "Aproveite cada centímetro com móveis sob medida de alta durabilidade em 100% MDF.", "pinned": null },
+            { "text": "Cozinhas residenciais e gourmets planejadas com perfeição. 10% de desconto à vista.", "pinned": null }
+          ],
+          "path1": "Cozinhas",
+          "path2": "Planejadas"
+        },
+        "[STARKEN] - Quartos e Closets": {
+          "headlines": [
+            { "text": "Quarto Sob Medida Alto Padrão", "pinned": "HEADLINE_1" },
+            { "text": "Closets Planejados Modernos", "pinned": "HEADLINE_2" },
+            { "text": "Realizzati Móveis", "pinned": null },
+            { "text": "Closet Sob Medida 100% MDF", "pinned": null },
+            { "text": "Guarda-Roupa Sob Medida MDF", "pinned": null },
+            { "text": "Otimize o Espaço do Quarto", "pinned": null },
+            { "text": "Gavetas com Corrediças Ocultas", "pinned": null },
+            { "text": "10% de Desconto À Vista", "pinned": null },
+            { "text": "Parcelamento em Até 24x", "pinned": null },
+            { "text": "Suavidade e Amortecimento", "pinned": null }
+          ],
+          "descriptions": [
+            { "text": "Otimize sua rotina com dormitórios e closets planejados em MDF com ferragens robustas.", "pinned": "DESCRIPTION_1" },
+            { "text": "Roupeiros e closets sob medida premium. 5 anos de garantia e pós-venda ativo.", "pinned": null },
+            { "text": "Closets exclusivos com gaveteiros modernos, corrediças ocultas e geometria perfeita.", "pinned": null }
+          ],
+          "path1": "Quartos",
+          "path2": "Closets"
+        }
+      }
+    };
+
+    // Referências do DOM
+    const campaignSelect = document.getElementById('campaign-select');
+    const adGroupSelect = document.getElementById('adgroup-select');
+    const headlinesList = document.getElementById('headlines-list');
+    const descriptionsList = document.getElementById('descriptions-list');
+    const headlinesCount = document.getElementById('headlines-count');
+    const descriptionsCount = document.getElementById('descriptions-count');
+    
+    const adTitleDisplay = document.getElementById('ad-title-display');
+    const adDescDisplay = document.getElementById('ad-desc-display');
+    const adUrlDisplay = document.getElementById('ad-url-display');
+    const deviceContainer = document.getElementById('device-container');
+    const googleAdCard = document.getElementById('google-ad-card');
+    
+    const btnShuffle = document.getElementById('btn-shuffle');
+    const btnMobile = document.getElementById('btn-mobile');
+    const btnDesktop = document.getElementById('btn-desktop');
+
+    // Inicialização dos Dropdowns
+    function initDropdowns() {
+      campaignSelect.innerHTML = '';
+      Object.keys(adsData).forEach(campaign => {
+        const option = document.createElement('option');
+        option.value = campaign;
+        option.textContent = campaign.replace('[STARKEN] - ', '');
+        campaignSelect.appendChild(option);
+      });
+
+      updateAdGroups();
+    }
+
+    function updateAdGroups() {
+      const selectedCampaign = campaignSelect.value;
+      adGroupSelect.innerHTML = '';
+      
+      if(adsData[selectedCampaign]) {
+        Object.keys(adsData[selectedCampaign]).forEach(adGroup => {
+          const option = document.createElement('option');
+          option.value = adGroup;
+          option.textContent = adGroup.replace('[STARKEN] - ', '');
+          adGroupSelect.appendChild(option);
+        });
+      }
+      loadGroupData();
+    }
+
+    // Carrega a listagem de títulos e descrições do grupo selecionado
+    function loadGroupData() {
+      const campaign = campaignSelect.value;
+      const adGroup = adGroupSelect.value;
+      
+      if (!adsData[campaign] || !adsData[campaign][adGroup]) return;
+      
+      const data = adsData[campaign][adGroup];
+      
+      // Contadores
+      headlinesCount.textContent = data.headlines.length;
+      descriptionsCount.textContent = data.descriptions.length;
+      
+      // Renderizar Títulos
+      headlinesList.innerHTML = '';
+      data.headlines.forEach(hl => {
+        const li = document.createElement('li');
+        li.className = 'asset-item';
+        
+        let pinBadge = '';
+        if (hl.pinned) {
+          const pinClass = hl.pinned === 'HEADLINE_1' ? 'pin-h1' : 'pin-h2';
+          const pinText = hl.pinned === 'HEADLINE_1' ? 'H1 Fixo' : 'H2 Fixo';
+          pinBadge = `<span class="pin-badge ${pinClass}"><i class="fa-solid fa-thumbtack"></i> ${pinText}</span>`;
+        }
+        
+        li.innerHTML = `<span class="asset-text">${hl.text}</span> ${pinBadge}`;
+        headlinesList.appendChild(li);
+      });
+
+      // Renderizar Descrições
+      descriptionsList.innerHTML = '';
+      data.descriptions.forEach(desc => {
+        const li = document.createElement('li');
+        li.className = 'asset-item';
+        
+        let pinBadge = '';
+        if (desc.pinned) {
+          pinBadge = `<span class="pin-badge pin-d1"><i class="fa-solid fa-thumbtack"></i> Desc 1 Fixa</span>`;
+        }
+        
+        li.innerHTML = `<span class="asset-text">${desc.text}</span> ${pinBadge}`;
+        descriptionsList.appendChild(li);
+      });
+
+      // URL de exibição customizada
+      adUrlDisplay.textContent = `https://orcamentos.realizzatimoveis.com.br/${data.path1.toLowerCase()}/${data.path2.toLowerCase()}`;
+
+      generateCombination();
+    }
+
+    // Gera uma combinação dinâmica baseada nas regras de Pins
+    function generateCombination() {
+      const campaign = campaignSelect.value;
+      const adGroup = adGroupSelect.value;
+      
+      if (!adsData[campaign] || !adsData[campaign][adGroup]) return;
+      
+      const data = adsData[campaign][adGroup];
+      
+      // 1. Resolver Títulos
+      let h1 = "";
+      let h2 = "";
+      let h3 = "";
+      
+      // Encontrar fixos
+      const fixedH1 = data.headlines.find(h => h.pinned === 'HEADLINE_1');
+      const fixedH2 = data.headlines.find(h => h.pinned === 'HEADLINE_2');
+      
+      h1 = fixedH1 ? fixedH1.text : getRandomAsset(data.headlines);
+      h2 = fixedH2 ? fixedH2.text : getRandomAsset(data.headlines, [h1]);
+      
+      // H3 aleatório (não pode ser h1 nem h2)
+      const possibleH3 = data.headlines.filter(h => h.text !== h1 && h.text !== h2);
+      h3 = getRandomAsset(possibleH3);
+      
+      // Monta o título do anúncio
+      let combinedTitle = `${h1} | ${h2}`;
+      if (h3) {
+        combinedTitle += ` | ${h3}`;
+      }
+      
+      // 2. Resolver Descrições
+      let d1 = "";
+      let d2 = "";
+      
+      const fixedD1 = data.descriptions.find(d => d.pinned === 'DESCRIPTION_1');
+      d1 = fixedD1 ? fixedD1.text : getRandomAsset(data.descriptions);
+      
+      const possibleD2 = data.descriptions.filter(d => d.text !== d1);
+      d2 = getRandomAsset(possibleD2);
+      
+      let combinedDesc = d1;
+      if (d2) {
+        combinedDesc += ` ${d2}`;
+      }
+
+      // Aplica com animação de fade
+      googleAdCard.classList.remove('animate-ad');
+      void googleAdCard.offsetWidth; // Força reflow
+      
+      adTitleDisplay.textContent = combinedTitle;
+      adDescDisplay.textContent = combinedDesc;
+      
+      googleAdCard.classList.add('animate-ad');
+    }
+
+    function getRandomAsset(arr, excludeTexts = []) {
+      const filtered = arr.filter(item => !excludeTexts.includes(item.text));
+      if (filtered.length === 0) return "";
+      const randomIndex = Math.floor(Math.random() * filtered.length);
+      return filtered[randomIndex].text;
+    }
+
+    // Event Listeners
+    campaignSelect.addEventListener('change', updateAdGroups);
+    adGroupSelect.addEventListener('change', loadGroupData);
+    btnShuffle.addEventListener('click', generateCombination);
+
+    // Alternador de dispositivo
+    btnMobile.addEventListener('click', () => {
+      btnMobile.classList.add('active');
+      btnDesktop.classList.remove('active');
+      deviceContainer.classList.remove('desktop-mode');
+    });
+
+    btnDesktop.addEventListener('click', () => {
+      btnDesktop.classList.add('active');
+      btnMobile.classList.remove('active');
+      deviceContainer.classList.add('desktop-mode');
+    });
+
+    // Iniciar tudo
+    initDropdowns();
+  </script>
+</body>
+</html>

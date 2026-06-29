@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/visualizador_anuncios", "destination": "/visualizador_anuncios.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
