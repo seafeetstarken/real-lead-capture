@@ -13,7 +13,7 @@ const Footer = () => {
               className="h-12 mb-6"
             />
             <p className="text-secondary-foreground/80 leading-relaxed">
-              Transformamos casas em lares únicos com móveis sob medida de alto padrão há mais de 15 anos.
+              Transformamos casas em lares únicos com móveis sob medida de alto padrão há mais de 14 anos.
             </p>
           </div>
 

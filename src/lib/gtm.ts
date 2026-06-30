@@ -50,7 +50,7 @@ interface LeadUserData {
 
 export const trackLeadSuccess = (userData: LeadUserData) => {
   pushToDataLayer({
-    event: "generate_lead",
+    event: "lead_submit_success",
     lead_interesse: "moveis_planejados",
     user_data: {
       email: userData.email,

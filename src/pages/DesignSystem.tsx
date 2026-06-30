@@ -155,7 +155,7 @@ export default function DesignSystem() {
                 <div className="border-t border-primary/10 pt-4">
                   <span className="text-[10px] font-mono tracking-widest text-primary uppercase block mb-1">Subtítulo (Inter Light / Medium)</span>
                   <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed">
-                    Móveis planejados sob medida com acabamento premium e garantia de fábrica de 5 anos.
+                    Móveis planejados sob medida com acabamento premium e garantia de fábrica contratual.
                   </p>
                 </div>
                 <div className="border-t border-primary/10 pt-4">

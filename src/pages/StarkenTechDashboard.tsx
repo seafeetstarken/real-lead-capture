@@ -278,7 +278,7 @@ export default function StarkenTechDashboard() {
                     Móveis Sob Medida Alto Padrão - Realizzati Móveis
                   </h3>
                   <p className="text-xs text-[#4d5156] mb-3">
-                    Marcenaria sob medida de alto padrão. Projetos exatos em 100% MDF com acabamento fino. Entrega no prazo sob contrato e 5 anos de garantia estrutural. Peça seu orçamento.
+                    Marcenaria própria com mais de 14 anos de mercado. Móveis com materiais de alta qualidade com garantia contratual. Execução exata de projetos.
                   </p>
                   <div className="border-t border-[#f1f3f4] pt-2 flex gap-4 text-xs text-[#1a0dab] font-light">
                     <span>💎 Marcenaria Fina</span>

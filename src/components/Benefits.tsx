@@ -13,8 +13,8 @@ const benefits = [
   },
   {
     icon: Users,
-    title: "15 Anos de Experiência",
-    description: "Experiência consolidada no Médio Vale e Litoral de SC, com centenas de projetos realizados."
+    title: "Marcenaria Própria",
+    description: "Mais de 14 anos de mercado e experiência consolidada no Médio Vale e Litoral de SC."
   },
   {
     icon: Award,
